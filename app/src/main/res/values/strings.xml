@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="patientslist">patientslist</string>
+    <string name="calender">calender</string>
+    <string name="visite">visite</string>
+    <string name="therapie">therapie</string>
 </resources>
