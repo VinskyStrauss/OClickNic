@@ -1,74 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ArztSearchActivity">
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="190dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="45dp"
-        android:gravity="center"
-        android:text="@string/patientslist"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <SearchView
+        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="0dp"
+        android:queryHint="search here"
+        android:id="@+id/search_bar"
+        />
 
     <Button
-        android:id="@+id/button6"
-        android:layout_width="0dp"
-        android:layout_height="128dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginBottom="40dp"
-        android:text="@string/calender"
-        app:layout_constraintBottom_toTopOf="@+id/button8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button5" />
+        android:layout_below="@+id/search_bar"
+        android:id="@+id/visit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visite"
+        android:layout_marginLeft="50dp"
+        />
 
     <Button
-        android:id="@+id/button7"
-        android:layout_width="161dp"
-        android:layout_height="124dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="240dp"
-        android:text="@string/visite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        android:layout_below="@+id/search_bar"
+        android:id="@+id/calenderButton"
+        android:layout_toRightOf="@+id/visit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="Calendar" />
 
     <Button
-        android:id="@+id/button8"
-        android:layout_width="0dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="356dp"
-        android:layout_marginEnd="42dp"
-        android:text="@string/therapie"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button7"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/therapie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Therapie"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_below="@+id/visit"/>
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView4"
-        android:layout_width="280dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginBottom="67dp"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/patientlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calenderButton"
+        android:layout_toRightOf="@+id/therapie"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:text="Liste" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/bottomnavigationbar"
+        >
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnavigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav_menu"/>
 
 
-
+</RelativeLayout>
