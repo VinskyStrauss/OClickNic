@@ -6,64 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/Username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:layout_centerHorizontal="true"
-        android:text="Username" />
+
 
     <Button
-        android:id="@+id/Login"
+        android:id="@+id/Arzt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextTextPassword"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="Log In"
+        android:layout_marginTop="200dp"
+        android:text="Arzt"
         tools:layout_editor_absoluteX="158dp"
         tools:layout_editor_absoluteY="80dp" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
+    <Button
+        android:id="@+id/Verwalter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_below="@id/Username"
-        android:layout_centerVertical="true"
+        android:layout_below="@id/Arzt"
+        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        android:text="" />
+        android:text="Verwalter" />
 
-    <EditText
-        android:id="@+id/editTextTextPassword"
+    <Button
+        android:id="@+id/Labor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Password"
+        android:layout_below="@id/Verwalter"
+        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="" />
+        android:text="Labor" />
 
-    <TextView
-        android:id="@+id/Password"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/bottomnavigationbar"
+        >
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnavigationbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextTextPersonName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Password" />
-
-    <Switch
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:id="@+id/Darkmode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Light mode" />
-
+        app:menu="@menu/bottom_nav_menu"/>
 
 
 </RelativeLayout>

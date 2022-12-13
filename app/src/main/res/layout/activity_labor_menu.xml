@@ -4,27 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
-
-    <SearchView
-        android:layout_centerHorizontal="true"
-        android:layout_width="250dp"
-        android:layout_height="122dp"
-        android:layout_marginTop="0dp"
-        android:queryHint="search here"
-     />
+    tools:context=".LaborMenu">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/MrtTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
-        android:layout_marginRight="30dp"
-        android:text="+"
-        />
+        android:layout_marginTop="200dp"
+        android:text="MRT-Test"
+        android:layout_centerHorizontal="true"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="147dp" />
 
+    <Button
+        android:id="@+id/BlutTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/MrtTest"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="BlutTest"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="266dp" />
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
@@ -40,5 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"/>
+
+
+
 
 </RelativeLayout>
