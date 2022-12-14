@@ -1,27 +1,16 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Switch;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
-import com.example.myapplication.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     Button Arzt;
@@ -37,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Verwalter=findViewById(R.id.Verwalter);
         Labor=findViewById(R.id.Labor);
         Intent intent = new Intent(this, ArztSearchActivity.class);
-        Intent intent2 = new Intent(this, MainActivity2.class);
+        Intent intent2 = new Intent(this, VerwalterActivity.class);
         Intent intent3 = new Intent(this, LaborMenu.class);
         Arzt.setOnClickListener(new View.OnClickListener() {
             @Override
