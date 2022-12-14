@@ -15,14 +15,6 @@ public class MrtResultFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        back.findViewById(R.id.revert);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                
-            }
-        });
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_mrt_result, container, false);
         return view;
