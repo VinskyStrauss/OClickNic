@@ -25,6 +25,14 @@
         android:text="+"
         />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient-Liste"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
@@ -40,5 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"/>
+
+
+
 
 </RelativeLayout>

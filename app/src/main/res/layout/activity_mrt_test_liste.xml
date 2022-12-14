@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/testListeactv"
     tools:context=".MrtTestListe">
 
     <TextView
@@ -15,13 +16,20 @@
         android:layout_marginLeft="35dp"
         android:textSize="20dp"
         android:text="MRT-Test Liste" />
-
-    <Button
-        android:id="@+id/viewResult"
-        android:layout_width="wrap_content"
+    <ListView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mrttestliste"
-        android:text="MRT-Ergebniss" />
+        android:id="@+id/testList"/>
+
+
+    <FrameLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        />
+
+
 
     <FrameLayout
         android:id="@+id/frame_layout"
