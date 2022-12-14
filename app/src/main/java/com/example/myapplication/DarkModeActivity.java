@@ -10,39 +10,44 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Objects;
+
 public class DarkModeActivity extends AppCompatActivity {
-    Button darkmode;
+    Switch darkmode;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dark_mode);
-        darkmode = findViewById(R.id.DarkButton);
-
-
-        // Implementation of dark mode button
-        darkmode.setOnClickListener(v -> {
-            if (ContainerAndGlobal.isDarkmode()) {
-                // if dark mode is on it
-                // will turn it off
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                // it will set isDarkModeOn
-                // change text of Button
-                darkmode.setText("enable_darkmode");
-            }
-            else {
-                // if dark mode is off
-                // it will turn it on
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                // it will set isDarkModeOn
-                // boolean to true
-                // change text of Button
-                darkmode.setText("disable_darkmode");
+        //DarkMode
+        darkmode = findViewById(R.id.darkSwitch);
+        darkmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    compoundButton.setText("Night Mode");
+                }else{
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    compoundButton.setText("Light Mode");
+                }
             }
         });
+
+        //set the pre theme mode when the app starts?
+        boolean isNightModeOn =  AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
+        darkmode.setChecked(isNightModeOn);
+        if(isNightModeOn){
+            darkmode.setText("Night Mode");
+        }else{
+            darkmode.setText("Light Mode");
+        }
+
 
         //BottomNavigationBar
         bottomNavigationView = findViewById(R.id.bottomnavigationbar);
@@ -71,4 +76,14 @@ public class DarkModeActivity extends AppCompatActivity {
             }
         });
     }
+    //Remove eye flicker
+    @Override
+    public void recreate() {
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+        startActivity(getIntent());
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
 }
+
