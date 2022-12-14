@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.view.View;
 import android.widget.ListView;
 
@@ -23,13 +22,11 @@ import java.util.List;
 
 public class MrtTestListe extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mrt_test_liste);
-        //Fragment
-        fragment = new MrtResultFragment();
+
         //Check the result from MRT test
         ListView listView = findViewById(R.id.testList);
         List<String> list = new ArrayList<>();
@@ -44,11 +41,7 @@ public class MrtTestListe extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 if(position == 0){
-                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.testListeactv,fragment);
-                    fragmentTransaction.commit();
-
-
+                    startActivity(new Intent(MrtTestListe.this,MrtResultActivity.class));
                 }
 
             };
@@ -67,7 +60,7 @@ public class MrtTestListe extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext()
                                 ,MainActivity.class));
                         return true;
-                    case R.id.darkmode:
+                    case R.id.setting:
                         startActivity(new Intent(getApplicationContext()
                                 ,DarkModeActivity.class));
                         overridePendingTransition(0,0);

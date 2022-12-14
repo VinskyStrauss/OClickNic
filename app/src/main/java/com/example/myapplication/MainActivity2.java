@@ -1,19 +1,12 @@
 package com.example.myapplication;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -53,7 +46,7 @@ public class MainActivity2 extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext()
                                 ,MainActivity.class));
                         return true;
-                    case R.id.darkmode:
+                    case R.id.setting:
                         startActivity(new Intent(getApplicationContext()
                                 ,DarkModeActivity.class));
                         overridePendingTransition(0,0);

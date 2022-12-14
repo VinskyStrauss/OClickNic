@@ -4,18 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.Objects;
 
 public class DarkModeActivity extends AppCompatActivity {
     Switch darkmode;
@@ -53,15 +48,13 @@ public class DarkModeActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomnavigationbar);
         bottomNavigationView.setSelectedItemId(R.id.home);
         //implementation of BottomNavigationBar
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        bottomNavigationView.setOnItemSelectedListener(item ->  {
                 switch (item.getItemId()){
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext()
                                 ,MainActivity.class));
                         return true;
-                    case R.id.darkmode:
+                    case R.id.setting:
                         startActivity(new Intent(getApplicationContext()
                                 ,DarkModeActivity.class));
                         overridePendingTransition(0,0);
@@ -73,7 +66,6 @@ public class DarkModeActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
-            }
         });
     }
     //Remove eye flicker

@@ -1,18 +1,13 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Switch;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -53,7 +48,7 @@ public class LaborMenu extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext()
                                 ,MainActivity.class));
                         return true;
-                    case R.id.darkmode:
+                    case R.id.setting:
                         startActivity(new Intent(getApplicationContext()
                                 ,DarkModeActivity.class));
                         overridePendingTransition(0,0);

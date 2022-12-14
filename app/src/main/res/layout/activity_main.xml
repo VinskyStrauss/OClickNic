@@ -6,43 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
-    <Button
-        android:id="@+id/Arzt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
-        android:text="Arzt"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="80dp" />
-
-    <Button
-        android:id="@+id/Verwalter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Arzt"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
-        android:text="Verwalter" />
-
-    <Button
-        android:id="@+id/Labor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Verwalter"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
-        android:text="Labor" />
-
     <FrameLayout
-        android:id="@+id/frame_layout"
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignTop="@+id/bottomnavigationbar"
-        >
-
+        android:layout_above="@id/bottomnavigationbar">
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:id="@+id/home"/>
     <item
-        android:title="Dark Mode"
-        android:icon="@drawable/ic_baseline_dark_mode_24"
-        android:id="@+id/darkmode"/>
+        android:title="Setting"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:id="@+id/setting"/>
 </menu>

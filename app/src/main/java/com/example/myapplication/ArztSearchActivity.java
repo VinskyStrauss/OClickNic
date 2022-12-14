@@ -49,7 +49,7 @@ public class ArztSearchActivity extends AppCompatActivity {
                                 ,MainActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.darkmode:
+                    case R.id.setting:
                         startActivity(new Intent(getApplicationContext()
                                 ,DarkModeActivity.class));
                         overridePendingTransition(0,0);
