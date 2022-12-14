@@ -32,7 +32,7 @@ public class ArztPatientActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 if(position == 0){
-                    startActivity(new Intent(ArztPatientActivity.this,PatientList.class));
+                    startActivity(new Intent(ArztPatientActivity.this, PatientDaten.class));
                 }
 
 
