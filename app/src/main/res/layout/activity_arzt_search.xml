@@ -15,42 +15,24 @@
         android:queryHint="search here"
         android:id="@+id/search_bar"
         />
-
-    <Button
-        android:layout_below="@+id/search_bar"
-        android:id="@+id/visit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Visite"
-        android:layout_marginLeft="50dp"
-        />
-
     <Button
         android:layout_below="@+id/search_bar"
         android:id="@+id/calenderButton"
-        android:layout_toRightOf="@+id/visit"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:text="Calendar" />
 
-    <Button
-        android:id="@+id/therapie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Therapie"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_below="@+id/visit"/>
 
     <Button
         android:id="@+id/patientlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/calenderButton"
-        android:layout_toRightOf="@+id/therapie"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:text="Liste" />
 
     <FrameLayout

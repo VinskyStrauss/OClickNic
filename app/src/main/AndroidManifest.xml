@@ -83,7 +83,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity2"
+            android:name=".VerwalterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,22 +19,28 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity2 extends AppCompatActivity {
     Button plus;
+    Button viewList;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         plus=findViewById(R.id.button2);
+        viewList=findViewById(R.id.button);
         Intent addpatient = new Intent(this, AddPatient.class);
+        Intent intent =  new Intent(this, ArztPatientActivity.class);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(addpatient);
             }
         });
-
-
-
+        viewList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
+            }
+        });
         //BottomNavigationBar
         bottomNavigationView = findViewById(R.id.bottomnavigationbar);
         bottomNavigationView.setSelectedItemId(R.id.home);
