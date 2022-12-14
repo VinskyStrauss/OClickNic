@@ -2,32 +2,46 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class PatientDaten extends AppCompatActivity {
-    TextView nameTextView, Adresse,VrNr,Geburt;
+    private EditText name, adresse, versicherungNr, geburtsdatum;
+    private Button Submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_daten);
 
-        nameTextView = findViewById(R.id.name);
-        Adresse = findViewById(R.id.adresse);
-        VrNr = findViewById(R.id.krankenkasse);
-        Geburt = findViewById(R.id.birthDate);
+        Submit = findViewById(R.id.submit);
+        name = findViewById(R.id.editTextTextPersonName2);
+        adresse = findViewById(R.id.editAdresse);
+        versicherungNr = findViewById(R.id.krankenkassenummer);
+        geburtsdatum = findViewById(R.id.editbirthDate);
 
-        String patientname = getIntent().getStringExtra("Patientname");
-        String adresse = getIntent().getStringExtra("Patientadresse");
-        String geburtsdatum = getIntent().getStringExtra("Patientgeburtsdatum");
-        String Ver = getIntent().getStringExtra("Patientversicherungsnummer");
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name_ = name.getText().toString();
+                String adresse_ = adresse.getText().toString();
+                String versicherungNr_ = versicherungNr.getText().toString();
+                String geb_ = geburtsdatum.getText().toString();
 
-        nameTextView.setText(patientname);
-        Adresse.setText(adresse);
-        VrNr.setText(Ver);
-        Geburt.setText(geburtsdatum);
+                Intent intent = new Intent(PatientDaten.this, AddPatient.class);
+                intent.putExtra("Patientname", name_);
+                intent.putExtra("Patientadresse", adresse_);
+                intent.putExtra("Patientversicherungsnummer", versicherungNr_);
+                intent.putExtra("Patientgeburtsdatum", geb_);
+                startActivity(intent);
+
+            }
 
 
+        });
     }
 }

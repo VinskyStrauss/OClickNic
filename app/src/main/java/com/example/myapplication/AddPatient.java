@@ -8,44 +8,31 @@ import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class AddPatient extends AppCompatActivity {
     Button add;
-    private EditText name, adresse, versicherungNr,geburtsdatum;
-    private Button Submit;
+    TextView nameTextView, Adresse,VrNr,Geburt;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_patient);
+        nameTextView = findViewById(R.id.name);
+        Adresse = findViewById(R.id.adresse);
+        VrNr = findViewById(R.id.krankenkasse);
+        Geburt = findViewById(R.id.birthDate);
 
-        Submit = findViewById(R.id.submit);
-        name = findViewById(R.id.editTextTextPersonName2);
-        adresse = findViewById(R.id.editAdresse);
-        versicherungNr = findViewById(R.id.krankenkassenummer);
-        geburtsdatum = findViewById(R.id.editbirthDate);
+        String patientname = getIntent().getStringExtra("Patientname");
+        String adresse = getIntent().getStringExtra("Patientadresse");
+        String geburtsdatum = getIntent().getStringExtra("Patientgeburtsdatum");
+        String Ver = getIntent().getStringExtra("Patientversicherungsnummer");
 
-        Submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name_ = name.getText().toString();
-                String adresse_ = adresse.getText().toString();
-                String versicherungNr_ = versicherungNr.getText().toString();
-                String geb_ = geburtsdatum.getText().toString();
-
-                Intent intent = new Intent(AddPatient.this,PatientDaten.class);
-                intent.putExtra("Patientname",name_);
-                intent.putExtra("Patientadresse",adresse_);
-                intent.putExtra("Patientversicherungsnummer",versicherungNr_);
-                intent.putExtra("Patientgeburtsdatum",geb_);
-                startActivity(intent);
-
-            }
-        });
-
-
-
-
+        nameTextView.setText(patientname);
+        Adresse.setText(adresse);
+        VrNr.setText(Ver);
+        Geburt.setText(geburtsdatum);
 
 
         add = findViewById(R.id.submit);
