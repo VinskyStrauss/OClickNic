@@ -29,9 +29,28 @@ public class HomeFragment extends Fragment {
         Button arzt  =  view.findViewById(R.id.doctor);
         Button lab =  view.findViewById(R.id.labor);
         Button administration = view.findViewById(R.id.verwalter);
+        //make Fragment
+        final ArztMenu arztFragment = new ArztMenu();
+        final LaborMenu laborMenu = new LaborMenu();
+        final VerwalterMenu verwalterMenu = new VerwalterMenu();
         //Assign Button
-        arzt.setOnClickListener(v -> startActivity(new Intent(getActivity(), ArztSearchActivity.class)));
-        lab.setOnClickListener(v -> startActivity(new Intent(getActivity(), LaborMenu.class)));
-        administration.setOnClickListener(v -> startActivity(new Intent(getActivity(), MainActivity2.class)));
+        arzt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).replaceFragment(arztFragment);
+            }
+        });
+        lab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).replaceFragment(laborMenu);
+            }
+        });
+        administration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).replaceFragment(verwalterMenu);
+            }
+        });
     }
 }

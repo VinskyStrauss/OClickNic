@@ -12,40 +12,26 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class LaborMenu extends Fragment {
-
+public class ArztMenu extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_labor_menu, container, false);
+        return inflater.inflate(R.layout.fragment_arzt_menu, container, false);
     }
+
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //Button
-        Button mrtList = view.findViewById(R.id.MrtTest);
-        Button blutList = view.findViewById(R.id.BlutTest);
+        super.onViewCreated(view,savedInstanceState);
+        Button list =  view.findViewById(R.id.patientlist);
         //Intent
-        Intent intent = new Intent(getActivity(), MrtTestListe.class);
-        Intent intent2 = new Intent(getActivity(), BlutTestListe.class);
-
-        mrtList.setOnClickListener(new View.OnClickListener() {
+        Intent intent = new Intent(getActivity(), PatientList.class);
+        list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(intent);
             }
         });
-
-        blutList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent2);
-            }
-        });
-
-
     }
-
 }

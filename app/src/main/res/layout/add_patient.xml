@@ -7,19 +7,39 @@
     tools:context=".AddPatient">
 
     <TextView
-        android:id="@+id/name"
-        android:layout_marginTop="30dp"
+        android:id="@+id/Nachname"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nach-, Vorname"
+        android:text="Nachname"
         tools:layout_editor_absoluteX="12dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_below="@+id/name"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/Nachname"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+    <TextView
+        android:layout_below="@+id/editTextTextPersonName2"
+        android:id="@+id/Vorname"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vorname"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="16dp" />
+    <EditText
+        android:id="@+id/editVorname"
+        android:layout_below="@id/Vorname"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,8 +49,8 @@
 
     <TextView
         android:id="@+id/adresse"
-        android:layout_below="@id/editTextTextPersonName2"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/editVorname"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +59,7 @@
     <EditText
         android:id="@+id/editAdresse"
         android:layout_below="@id/adresse"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,7 +70,7 @@
     <TextView
         android:id="@+id/krankenkasse"
         android:layout_below="@id/editAdresse"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,7 +79,7 @@
     <EditText
         android:id="@+id/krankenkassenummer"
         android:layout_below="@id/krankenkasse"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,40 +90,40 @@
     <TextView
         android:id="@+id/birthDate"
         android:layout_below="@id/krankenkassenummer"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Geburtsdatum" />
+        android:text="Geburtsdatum(in YYYY-MM-DD) " />
 
     <EditText
         android:id="@+id/editbirthDate"
         android:layout_below="@id/birthDate"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="date" />
+        android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/Datum"
+        android:id="@+id/nummer"
         android:layout_below="@id/editbirthDate"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Datum" />
+        android:text="Rufnummer" />
 
     <EditText
-        android:id="@+id/editDatum"
-        android:layout_below="@id/Datum"
-        android:layout_marginTop="20dp"
+        android:id="@+id/editNumber"
+        android:layout_below="@id/nummer"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="date" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/submit"
@@ -112,5 +132,24 @@
         android:layout_marginBottom="100dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Einfuegen" />
+        android:text="Add Patient" />
+
+    <TextView
+        android:layout_below="@+id/editNumber"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/ID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient ID" />
+
+    <EditText
+        android:layout_below="@+id/ID"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"/>
 </RelativeLayout>

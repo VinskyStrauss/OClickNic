@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PatientData">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient Data"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"/>
+
+    <TextView
+        android:layout_below="@+id/title"
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nach-, Vorname:"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="129dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        />
+
+    <TextView
+        android:layout_below="@+id/name"
+        android:id="@+id/sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Geschlecht:"
+        tools:layout_editor_absoluteX="58dp"
+        tools:layout_editor_absoluteY="34dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"/>
+
+    <TextView
+        android:layout_below="@+id/sex"
+        android:id="@+id/patientID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient-ID:"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="104dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"/>
+
+    <TextView
+        android:layout_below="@+id/patientID"
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status:"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="178dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"/>
+
+    <Button
+        android:layout_below="@+id/status"
+        android:id="@+id/MRT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MRT-Bild"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"/>
+
+    <Button
+        android:id="@+id/Blutwert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/MRT"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="-47dp"
+        android:layout_toEndOf="@+id/MRT"
+        android:text="Blutwert" />
+
+    <TextView
+        android:id="@+id/vollname"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/title"
+        android:layout_marginStart="25dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/name"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/geschlecht"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/vollname"
+        android:layout_marginStart="56dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/sex"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/ID"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/geschlecht"
+        android:layout_marginStart="96dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/patientID"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/condition"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/patientID"
+        android:layout_marginStart="85dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/status"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/note"
+        android:layout_below="@id/MRT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note:"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="360dp"
+        android:layout_height="147dp"
+        android:layout_below="@id/note"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+    <Button
+        android:id="@+id/saveData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:text="Save" />
+
+    <Switch
+        android:layout_below="@+id/saveData"
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:text="Send to MRT" />
+
+    <Switch
+        android:layout_below="@+id/saveData"
+        android:layout_toEndOf="@+id/switch1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send to Blood Test" />
+
+
+</RelativeLayout>

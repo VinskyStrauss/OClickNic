@@ -14,12 +14,5 @@ public class AddPatient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_patient);
         add = findViewById(R.id.submit);
-        Intent intent = new Intent(this , MainActivity2.class);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent);
-            }
-        });
     }
 }

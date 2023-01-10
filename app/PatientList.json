@@ -1,0 +1,49 @@
+{
+  "Patient": [
+    {
+        "Patient ID":"1",
+        "Vorname":"Thomas",
+        "Nachname":"Ackerman",
+        "Geburstag":"2000-08-17",
+        "Versciherungsnummer":"12345678",
+        "Adresse":"Berliner Allee 7, 64295, Darmstadt ",
+        "Rufnummer":"555-555-555",
+        "Geschlecht":"Männlich",
+        "Status": "Krank"
+    },
+    {
+        "Patient ID":"2",
+        "Vorname":"Rebecca",
+        "Nachname":"Müller",
+        "Geburstag":"1993-06-17",
+        "Versciherungsnummer":"23456789",
+        "Adresse":"Am Karlshof 3d, 64289, Darmstadt ",
+        "Rufnummer":"111-111-111",
+        "Geschlecht":"Weiblich",
+        "Status": "Krank"
+    },
+    {
+        "Patient ID":"3",
+        "Vorname":"Peter",
+        "Nachname":"Zimmerman",
+        "Geburstag":"1971-01-05",
+        "Versciherungsnummer":"34567890",
+        "Adresse":"Havelstraße 7, 64295, Darmstadt ",
+        "Rufnummer":"333-333-333",
+        "Geschlecht":"Männlich",
+        "Status": "Krank"
+    },
+    {
+        "Patient ID":"4",
+        "Vorname":"Anne",
+        "Nachname":"Frank",
+        "Geburstag":"1991-12-19",
+        "Versciherungsnummer":"01234567",
+        "Adresse":"Rhein-Neckar-Straße 21, 64293, Darmstadt",
+        "Rufnummer":"222-222-222",
+        "Geschlecht":"Weiblich",
+        "Status": "geheilt"
+    }
+  ]
+  
+}

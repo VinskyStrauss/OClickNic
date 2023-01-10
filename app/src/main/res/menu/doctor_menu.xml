@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+     android:id="@+id/setMrt"
+     android:title="Send to MRT"
+        />
+    <item
+        android:id="@+id/setBlut"
+        android:title="Send to BloodTest"
+        />
+
+</menu>

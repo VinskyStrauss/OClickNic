@@ -1,0 +1,54 @@
+[
+      {
+            "Patient ID":"1",
+            "Vorname":"Thomas",
+            "Nachname":"Ackerman",
+            "Geburtstag":"2000-08-17",
+            "Versicherungsnummer":"12345678",
+            "Adresse":"Berliner Allee 7, 64295, Darmstadt ",
+            "Rufnummer":"555-555-555",
+            "Geschlecht":"Männlich",
+            "Status": "Krank",
+            "MRT": "0",
+            "Description": ""
+      },
+      {
+            "Patient ID":"2",
+            "Vorname":"Rebecca",
+            "Nachname":"Müller",
+            "Geburtstag":"1993-06-17",
+            "Versicherungsnummer":"23456789",
+            "Adresse":"Am Karlshof 3d, 64289, Darmstadt ",
+            "Rufnummer":"111-111-111",
+            "Geschlecht":"Weiblich",
+            "Status": "Krank",
+            "MRT": "0",
+            "Description": ""
+      },
+      {
+            "Patient ID":"3",
+            "Vorname":"Peter",
+            "Nachname":"Zimmerman",
+            "Geburtstag":"1971-01-05",
+            "Versicherungsnummer":"34567890",
+            "Adresse":"Havelstraße 7, 64295, Darmstadt ",
+            "Rufnummer":"333-333-333",
+            "Geschlecht":"Männlich",
+            "Status": "Krank",
+            "MRT": "0",
+            "Description": ""
+      },
+      {
+            "Patient ID":"4",
+            "Vorname":"Anne",
+            "Nachname":"Frank",
+            "Geburtstag":"1991-12-19",
+            "Versicherungsnummer":"2234567",
+            "Adresse":"Rhein-Neckar-Straße 21, 64293, Darmstadt",
+            "Rufnummer":"222-222-222",
+            "Geschlecht":"Weiblich",
+            "Status": "Geheilt",
+            "MRT": "0",
+            "Description": ""
+      }
+]
