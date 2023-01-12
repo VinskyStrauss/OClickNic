@@ -2,13 +2,16 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -22,29 +25,64 @@ public class PatientData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_data);
         //Initiliaze the Object
+        Button mrtTest = findViewById(R.id.MRT);
+        Button bloodWert = findViewById(R.id.Blutwert);
         int position = ContainerAndGlobal.getPosition();
         PatientClass patient;
         patient=ContainerAndGlobal.getPatientLists().get(position);
         TextView name = findViewById(R.id.vollname);
         TextView id = findViewById(R.id.ID);
         TextView sex = findViewById(R.id.geschlecht);
-        TextView status = findViewById(R.id.condition);
+        EditText status = findViewById(R.id.condition);
         EditText text = findViewById(R.id.editText);
         //Button
         Button save = findViewById(R.id.saveData);
+        //Switch
+        Switch mrt = findViewById(R.id.switch1);
+        Switch blood = findViewById(R.id.switch2);
 
         name.setText(patient.getNachname()+", "+patient.getVorname());
         id.setText(Integer.toString(patient.getId()));
         sex.setText(patient.getSex());
         status.setText(patient.getStatus());
         text.setText(patient.getBemerkung());
+        //Implementation of Button
+        mrtTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(patient.getSeemrt() == 1){
+                    startActivity(new Intent(PatientData.this,MrtResultPatient.class));
+                }
+            }
+        });
+
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 patient.setBemerkung(text.getText().toString());
+                finish();
             }
         });
 
+        //Implementation of switch
+        //for MRT
+        mrt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    patient.setMrt(1);
+                    compoundButton.setText("Sent to MRT");
+                    //add Patient to MRT list
+                    if(ContainerAndGlobal.checkPatient(patient,ContainerAndGlobal.getMrtPatient())) {
+                        ContainerAndGlobal.addPatientMRT(patient);
+                    }
+                }else{
+                    patient.setMrt(0);
+                    compoundButton.setText("No need MRT");
+                }
+            }
+        });
     }
 
     @Override
@@ -53,4 +91,5 @@ public class PatientData extends AppCompatActivity {
         inflater.inflate(R.menu.doctor_menu,menu);
         return true;
     }
+
 }

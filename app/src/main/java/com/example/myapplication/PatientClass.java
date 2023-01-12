@@ -6,7 +6,7 @@ import java.util.Date;
 public class PatientClass {
 
 
-    public PatientClass(int id, String nachname, String vorname, String adresse, String sex, int versicherungsnummer, String birthday, String rufnummer, String status, int mrt, String bemerkung) {
+    public PatientClass(int id, String nachname, String vorname, String adresse, String sex, int versicherungsnummer, String birthday, String rufnummer, String status, int mrt, String bemerkung, int seemrt) {
         this.id = id;
         this.nachname = nachname;
         this.vorname = vorname;
@@ -18,6 +18,7 @@ public class PatientClass {
         this.status = status;
         this.mrt = mrt;
         this.bemerkung = bemerkung;
+        this.seemrt = seemrt;
     }
     private final int id;
     private final String nachname;
@@ -30,6 +31,7 @@ public class PatientClass {
     private String status;
     private String bemerkung;
     private int mrt;
+    private int seemrt;
 
 
     public int getId() {
@@ -87,4 +89,10 @@ public class PatientClass {
         return bemerkung;
     }
 
+    public void setSeeMrt(int Set){
+        this.seemrt = Set;
+    }
+    public int getSeemrt(){
+        return seemrt;
+    }
 }

@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
         //Create Fragment
         final HomeFragment homeFragment = new HomeFragment();

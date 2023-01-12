@@ -10,7 +10,8 @@
             "Geschlecht":"Männlich",
             "Status": "Krank",
             "MRT": "0",
-            "Description": ""
+            "Description": "",
+            "SeeMRT": "0"
       },
       {
             "Patient ID":"2",
@@ -23,7 +24,8 @@
             "Geschlecht":"Weiblich",
             "Status": "Krank",
             "MRT": "0",
-            "Description": ""
+            "Description": "",
+            "SeeMRT": "0"
       },
       {
             "Patient ID":"3",
@@ -36,7 +38,8 @@
             "Geschlecht":"Männlich",
             "Status": "Krank",
             "MRT": "0",
-            "Description": ""
+            "Description": "",
+            "SeeMRT": "0"
       },
       {
             "Patient ID":"4",
@@ -49,6 +52,7 @@
             "Geschlecht":"Weiblich",
             "Status": "Geheilt",
             "MRT": "0",
-            "Description": ""
+            "Description": "",
+            "SeeMRT": "0"
       }
 ]

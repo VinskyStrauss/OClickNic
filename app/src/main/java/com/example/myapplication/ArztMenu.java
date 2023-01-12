@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SearchView;
 
 
 public class ArztMenu extends Fragment {
@@ -25,6 +26,8 @@ public class ArztMenu extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
         Button list =  view.findViewById(R.id.patientlist);
+        //Searchview
+        SearchView searchBar = view.findViewById(R.id.search_bar);
         //Intent
         Intent intent = new Intent(getActivity(), PatientList.class);
         list.setOnClickListener(new View.OnClickListener() {

@@ -21,28 +21,36 @@ import java.util.List;
 
 
 public class MrtTestListe extends AppCompatActivity {
+    List<String> patientListe;
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mrt_test_liste);
 
         //Check the result from MRT test
-        ListView listView = findViewById(R.id.testList);
-        List<String> list = new ArrayList<>();
-        List<String> patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getPatientLists());
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,list);
+        listView = findViewById(R.id.testList);
+        patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getMrtPatient());
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
         listView.setAdapter(arrayAdapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                if(position == 2){
-                    startActivity(new Intent(MrtTestListe.this,MrtResultActivity.class));
-                }
-
+                ContainerAndGlobal.savePosition(position);
+                newActivity(position);
             };
-
         });
 
+        }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getMrtPatient());
+    }
+
+    private View.OnClickListener newActivity(int patientPos){
+        startActivity(new Intent(MrtTestListe.this,MrtResultActivity.class));
+        return null;
     }
 }

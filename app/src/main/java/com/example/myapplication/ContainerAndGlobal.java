@@ -75,6 +75,10 @@ public class ContainerAndGlobal {
         patientListsVerwalter.add(patient);
     }
 
+    public static void addPatientMRT(PatientClass patientClass){
+        mrtPatient.add(patientClass);
+    }
+
     /**
      * Convert from JSON file into a java class
      *
@@ -93,7 +97,8 @@ public class ContainerAndGlobal {
                 (String) patientclass.get("Rufnummer"),
                 (String) patientclass.get("Status"),
                 Integer.parseInt(patientclass.get("MRT").toString()),
-                (String) patientclass.get("Description")
+                (String) patientclass.get("Description"),
+                Integer.parseInt(patientclass.get("SeeMRT").toString())
 
         );
         addPatient(tmpPatient);
@@ -142,7 +147,15 @@ public class ContainerAndGlobal {
             e.printStackTrace();
         }
     }
-
+    //Check if Patient already in list
+    public static boolean checkPatient(PatientClass patientClass,ArrayList<PatientClass> arrayList){
+        for(int i=0; i<arrayList.size(); i++){
+            if(patientClass.getVorname().equals(arrayList.get(i).getVorname()) && patientClass.getNachname().equals(arrayList.get(i).getNachname())){
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
 

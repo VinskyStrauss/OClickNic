@@ -10,17 +10,13 @@
     <SearchView
         android:layout_centerHorizontal="true"
         android:layout_width="250dp"
-        android:layout_height="122dp"
-        android:layout_marginTop="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:elevation="3dp"
+        android:iconifiedByDefault="false"
         android:queryHint="search here"
         android:id="@+id/search_bar"
         />
-
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        ></FrameLayout>
 
 
     <Button
