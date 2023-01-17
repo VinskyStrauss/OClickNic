@@ -8,25 +8,22 @@
 
 
     <SearchView
-        android:layout_centerHorizontal="true"
-        android:layout_width="250dp"
-        android:layout_height="30dp"
+        android:id="@+id/search_bar"
+        android:layout_width="393dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:elevation="3dp"
         android:iconifiedByDefault="false"
-        android:queryHint="search here"
-        android:id="@+id/search_bar"
-        />
-
+        android:layout_centerHorizontal="true"
+        android:queryHint="search here" />
 
     <Button
         android:id="@+id/patientlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/search_bar"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="70dp"
         android:text="Liste" />
 
 

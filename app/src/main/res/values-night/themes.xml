@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">#21582D</item>
+        <item name="colorPrimaryVariant">#30813D</item>
         <item name="colorOnPrimary">#FFF9F9</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -16,6 +16,15 @@
     <style name="Theme.MyApplication.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+    <style name="ListViewStyle.Light" parent="android:style/Widget.ListView">
+        <item name="background"></item>
+        <item name="android:divider"></item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:listSelector"></item>
+        <item name="android:drawSelectorOnTop">false</item>
+        <item name="android:cacheColorHint">#00000000</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
     <style name="Theme.MyApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

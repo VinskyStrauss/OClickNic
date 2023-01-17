@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,6 +28,15 @@ public class MrtTestListe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mrt_test_liste);
+
+        //Back
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         //Check the result from MRT test
         listView = findViewById(R.id.testList);
@@ -47,6 +57,8 @@ public class MrtTestListe extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getMrtPatient());
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
+        listView.setAdapter(arrayAdapter);
     }
 
     private View.OnClickListener newActivity(int patientPos){

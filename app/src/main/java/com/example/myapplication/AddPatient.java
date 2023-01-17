@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddPatient extends AppCompatActivity {
     Button add;
@@ -42,6 +43,8 @@ public class AddPatient extends AppCompatActivity {
                 PatientClass newPatient;
                 newPatient = new PatientClass(patientID,nachName,vorName,adresse,Sex,versicherung,birthdate,phoneNumber,"Krank",0,"",0);
                 ContainerAndGlobal.addPatient(newPatient);
+                finish();
+                Toast.makeText(AddPatient.this ," Patient added successfully", Toast.LENGTH_LONG).show();
             }
         });
     }

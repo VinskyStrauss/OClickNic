@@ -8,11 +8,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -38,8 +41,10 @@ public class PatientData extends AppCompatActivity {
         //Button
         Button save = findViewById(R.id.saveData);
         //Switch
-        Switch mrt = findViewById(R.id.switch1);
-        Switch blood = findViewById(R.id.switch2);
+        CheckBox mrt = findViewById(R.id.switch1);
+        CheckBox blood = findViewById(R.id.switch2);
+        //Image View
+        ImageView back = findViewById(R.id.imageView2);
 
         name.setText(patient.getNachname()+", "+patient.getVorname());
         id.setText(Integer.toString(patient.getId()));
@@ -61,7 +66,9 @@ public class PatientData extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 patient.setBemerkung(text.getText().toString());
+                patient.setStatus(status.getText().toString());
                 finish();
+                Toast.makeText(PatientData.this ," Note saved ", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -83,6 +90,15 @@ public class PatientData extends AppCompatActivity {
                 }
             }
         });
+
+        //Exit
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 
     @Override

@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 
 public class VerwalterMenu extends Fragment {
@@ -41,8 +44,22 @@ public class VerwalterMenu extends Fragment {
                 startActivity(intent2);
             }
         });
-
-
+        //Search Function
+        SearchView search = view.findViewById(R.id.search_bar);
+        Intent intent3 = new Intent(getActivity(), SearchVerwalterActivity.class);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent3);
+                search.clearFocus();
+            }
+        });
+        search.setOnQueryTextFocusChangeListener((v, hasFocus) -> {
+            if(hasFocus)
+                startActivity(intent3);
+            requireActivity().overridePendingTransition(0, 0);
+            search.clearFocus();
+        });
 
     }
 

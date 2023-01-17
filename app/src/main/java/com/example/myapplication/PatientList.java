@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
 
@@ -42,6 +43,14 @@ public class PatientList extends AppCompatActivity {
     public void show()
     {
         setContentView(R.layout.activity_patient_list);
+        //Back
+        ImageView back = findViewById(R.id.imageView3);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         ListView list =  findViewById(R.id.list_item);
         list.setSelector(R.color.blue);
         List<String> patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getPatientLists());

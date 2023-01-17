@@ -106,7 +106,7 @@ public class ContainerAndGlobal {
 
     public static List<String> patientListeToStringList(ArrayList<PatientClass> patientList) {
         List<String> patientListe = new ArrayList<>();
-        patientList.forEach((patient) -> patientListe.add(patient.getNachname() + ", " + patient.getVorname()));
+        patientList.forEach((patient) -> patientListe.add(patient.getVorname() + " " + patient.getNachname() + ", Zimmer:" + patient.getId()));
         return patientListe;
     }
 
@@ -155,6 +155,30 @@ public class ContainerAndGlobal {
             }
         }
         return true;
+    }
+    //Delete after mrt test
+    public static void deleteFromMrt(PatientClass patient){
+        for(int i=0; i<mrtPatient.size(); i++){
+            if(mrtPatient.get(i).getNachname().equals(patient.getNachname()) && mrtPatient.get(i).getVorname().equals(patient.getVorname())){
+                mrtPatient.remove(i);
+            }
+        }
+    }
+
+    //Check Discharged Patient
+    public static boolean checkDischarged(PatientClass patient){
+        if(patient.getStatus().equals("Geheilt")){
+            return true;
+        }
+        return false;
+    }
+    //Discharged Patient
+    public static void deletePatient(PatientClass patientClass){
+        for(int i=0; i<patientListsVerwalter.size(); i++){
+            if(patientListsVerwalter.get(i).getNachname().equals(patientClass.getNachname()) && patientListsVerwalter.get(i).getVorname().equals(patientClass.getVorname())){
+                patientListsVerwalter.remove(i);
+            }
+        }
     }
 
 }

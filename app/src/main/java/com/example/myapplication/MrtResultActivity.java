@@ -25,15 +25,16 @@ public class MrtResultActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(labMenu);
+                finish();
             }
         });
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ContainerAndGlobal.deleteFromMrt(patientClass);
                 patientClass.setSeeMrt(1);
+                patientClass.setMrt(0);
                 finish();
-
 
             }
         });

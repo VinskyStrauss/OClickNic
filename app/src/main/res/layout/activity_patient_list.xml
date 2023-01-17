@@ -5,15 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PatientList">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="44dp"
+        android:layout_height="43dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
+
     <TextView
         android:id="@+id/patientlist"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/imageView3"
         android:text="Patient List"
-        android:textStyle="bold"
         android:textSize="30dp"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="12dp"
         tools:layout_editor_absoluteY="16dp" />
 
@@ -23,7 +35,9 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
+
 
 
 </RelativeLayout>
