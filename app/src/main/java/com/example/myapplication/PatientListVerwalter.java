@@ -40,7 +40,6 @@ public class PatientListVerwalter extends AppCompatActivity {
         list =  findViewById(R.id.list_item);
         patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getPatientListsVerwalter());
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
-        list.setSelector(R.color.blue);
         list.setAdapter(arrayAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

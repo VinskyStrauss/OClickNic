@@ -21,17 +21,19 @@
     <SearchView
         android:layout_toRightOf="@id/back"
         android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp" />
+        android:layout_width="393dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:elevation="3dp"
+        android:iconifiedByDefault="false"
+        android:layout_centerHorizontal="true"
+        android:queryHint="search here" />
 
     <ListView
         android:layout_below="@id/search_bar"
         android:id="@+id/list_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:dividerHeight="5dp"
-        android:divider="@color/Green"
-        android:background="@color/gray"
+        style="@style/ListViewStyle"
         />
 </RelativeLayout>

@@ -52,7 +52,6 @@ public class PatientList extends AppCompatActivity {
             }
         });
         ListView list =  findViewById(R.id.list_item);
-        list.setSelector(R.color.blue);
         List<String> patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getPatientLists());
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
         list.setAdapter(arrayAdapter);

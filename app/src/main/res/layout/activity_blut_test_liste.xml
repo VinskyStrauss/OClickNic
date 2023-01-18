@@ -23,6 +23,7 @@
         android:layout_below="@+id/bluttestliste"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listview"/>
+        android:id="@+id/listview"
+        style="@style/ListViewStyle"/>
 
 </RelativeLayout>

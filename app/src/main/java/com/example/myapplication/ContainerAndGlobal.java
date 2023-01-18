@@ -185,6 +185,22 @@ public class ContainerAndGlobal {
             }
         }
     }
-
+    //Search Function
+    public static int searchPatient(String name){
+        for(int i=0; i<patientLists.size(); i++){
+            if((patientLists.get(i).getVorname().concat(" " +patientLists.get(i).getNachname())).contains(name)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    public static int searchPatientVerwalter(String name){
+        for(int i=0; i<patientListsVerwalter.size(); i++){
+            if((patientListsVerwalter.get(i).getVorname().concat(" " +patientListsVerwalter.get(i).getNachname())).contains(name)){
+                return i;
+            }
+        }
+        return -1;
+    }
 }
 
