@@ -54,6 +54,7 @@ public class SearchArztActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                String name = patientListe.get(position);
                 ContainerAndGlobal.savePosition(position);
                 newActivity(position);
             };

@@ -12,7 +12,7 @@ public class MrtResultActivity extends AppCompatActivity {
     Button upload;
     Intent labMenu;
     int pos =  ContainerAndGlobal.getPosition();
-    PatientClass patientClass = ContainerAndGlobal.getPatientLists().get(pos);
+    PatientClass patientClass = ContainerAndGlobal.getMrtPatient().get(pos);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +35,6 @@ public class MrtResultActivity extends AppCompatActivity {
                 patientClass.setSeeMrt(1);
                 patientClass.setMrt(0);
                 finish();
-
             }
         });
     }

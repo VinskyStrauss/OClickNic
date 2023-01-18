@@ -136,18 +136,15 @@
         android:inputType="textPersonName"
         android:text="Name" />
 
-    <EditText
-        android:id="@+id/condition"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="200dp"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/patientID"
         android:layout_marginStart="85dp"
-        android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
-        android:layout_toEndOf="@id/status"
-        android:ems="10"
-
-         />
+        android:layout_marginRight="30dp"
+        android:layout_toEndOf="@id/status" />
 
     <TextView
         android:id="@+id/note"
@@ -194,6 +191,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Send to Blood Test" />
+
 
 
 

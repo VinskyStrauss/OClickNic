@@ -18,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ContainerAndGlobal {
     private static ArrayList<PatientClass> patientLists = new ArrayList<>();
@@ -112,6 +113,10 @@ public class ContainerAndGlobal {
 
     public static void savePosition(int Pos) {
         stelle = Pos;
+    }
+
+    public static void saveName(String name){
+
     }
 
     public static int getPosition() {
