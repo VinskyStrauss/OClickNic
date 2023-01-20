@@ -24,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="50dp"
-        android:text="Liste" />
+        android:text="Patient List" />
 
 
 

@@ -6,7 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".AddPatient">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"/>
+
     <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/imageButton"
+        android:text="Add Patient Data"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_below="@+id/imageButton"
         android:id="@+id/Nachname"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
@@ -132,7 +154,7 @@
         android:id="@+id/ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Patient ID" />
+        android:text="Bed Number" />
 
     <EditText
         android:layout_below="@+id/ID"
@@ -171,4 +193,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Patient" />
+
+
+
 </RelativeLayout>

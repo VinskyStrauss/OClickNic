@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,8 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class PatientDataVerwalter extends AppCompatActivity {
 
@@ -41,7 +38,7 @@ public class PatientDataVerwalter extends AppCompatActivity {
         address.setText(patient.getAdresse());
         status.setText(patient.getStatus());
         insurance.setText(Integer.toString(patient.getVersicherungsnummer()));
-        zimmer.setText(Integer.toString(patient.getId()));
+        zimmer.setText(Integer.toString(patient.getZimmerNum()));
         telephone.setText(patient.getRufnummer());
         //Button Implementation
         entlassen.setOnClickListener(new View.OnClickListener() {
@@ -50,9 +47,9 @@ public class PatientDataVerwalter extends AppCompatActivity {
                 if(ContainerAndGlobal.checkDischarged(patient)){
                     ContainerAndGlobal.deletePatient(patient);
                     finish();
-                    Toast.makeText(PatientDataVerwalter.this ," Patient dismissed! ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PatientDataVerwalter.this ," Patient discharged! ", Toast.LENGTH_LONG).show();
                 }else {
-                    Toast.makeText(PatientDataVerwalter.this, " Patient still Sick ! ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PatientDataVerwalter.this, " Patient still sick! ", Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-        android:text="MRT-Test"
+        android:text="MRT Test"
         android:layout_centerHorizontal="true"
         tools:layout_editor_absoluteX="159dp"
         tools:layout_editor_absoluteY="147dp" />
@@ -30,7 +30,7 @@
         android:layout_below="@id/MrtTest"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:text="BlutTest"
+        android:text="BloodTest"
         tools:layout_editor_absoluteX="170dp"
         tools:layout_editor_absoluteY="266dp" />
 

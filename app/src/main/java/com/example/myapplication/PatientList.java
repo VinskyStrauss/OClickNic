@@ -32,7 +32,8 @@ import java.util.List;
 
 @SuppressLint("SimpleDateFormat")
 public class PatientList extends AppCompatActivity {
-
+    ListView list;
+    List<String> patientListe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +52,8 @@ public class PatientList extends AppCompatActivity {
                 finish();
             }
         });
-        ListView list =  findViewById(R.id.list_item);
-        List<String> patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getPatientLists());
+        list =  findViewById(R.id.list_item);
+        patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getPatientLists());
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
         list.setAdapter(arrayAdapter);
 
@@ -71,6 +72,13 @@ public class PatientList extends AppCompatActivity {
         return null;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getPatientLists());
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
+        list.setAdapter(arrayAdapter);
+    }
 
 
 }

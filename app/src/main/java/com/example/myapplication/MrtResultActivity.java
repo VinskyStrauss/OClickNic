@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MrtResultActivity extends AppCompatActivity {
     Button back;
@@ -35,6 +36,7 @@ public class MrtResultActivity extends AppCompatActivity {
                 patientClass.setSeeMrt(1);
                 patientClass.setMrt(0);
                 finish();
+                Toast.makeText(MrtResultActivity.this ,"Result uploaded to the Doctor ", Toast.LENGTH_LONG).show();
             }
         });
     }

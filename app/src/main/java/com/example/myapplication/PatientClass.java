@@ -1,13 +1,10 @@
 package com.example.myapplication;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class PatientClass {
 
 
-    public PatientClass(int id, String nachname, String vorname, String adresse, String sex, int versicherungsnummer, String birthday, String rufnummer, String status, int mrt, String bemerkung, int seemrt) {
-        this.id = id;
+    public PatientClass(int zimmerNummer, String nachname, String vorname, String adresse, String sex, int versicherungsnummer, String birthday, String rufnummer, String status, int mrt, String bemerkung, int seemrt) {
+        this.zimmerNum = zimmerNummer;
         this.nachname = nachname;
         this.vorname = vorname;
         this.adresse = adresse;
@@ -20,7 +17,7 @@ public class PatientClass {
         this.bemerkung = bemerkung;
         this.seemrt = seemrt;
     }
-    private final int id;
+    private final int zimmerNum;
     private final String nachname;
     private final String vorname;
     private final String adresse;
@@ -34,8 +31,8 @@ public class PatientClass {
     private int seemrt;
 
 
-    public int getId() {
-        return id;
+    public int getZimmerNum() {
+        return zimmerNum;
     }
 
     public String getNachname() {

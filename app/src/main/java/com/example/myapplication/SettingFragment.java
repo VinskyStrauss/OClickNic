@@ -38,19 +38,24 @@ public class SettingFragment extends Fragment {
                 if(isChecked){
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     buttonView.setText("Night Mode");
+                    ContainerAndGlobal.setChangedSetting(true);
                 }else{
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    buttonView.setText("Light Mode");
+                    buttonView.setText("Night Mode");
+                    ContainerAndGlobal.setChangedSetting(true);
                 }
             }
         });
+
+
+
         //Set the pre Theme mode when app starts
         boolean isNightModeOn = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
         mode.setChecked(isNightModeOn);
         if(isNightModeOn){
             mode.setText("Night Mode");
         }else{
-            mode.setText("Light Mode");
+            mode.setText("Night Mode");
         }
 
     }

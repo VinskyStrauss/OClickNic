@@ -14,16 +14,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PatientData extends AppCompatActivity {
@@ -74,10 +69,9 @@ public class PatientData extends AppCompatActivity {
         //Attaching data adapter to spinner
         status.setAdapter(dataAdapter);
 
-
-
+        //Set Patient Data
         name.setText(patient.getNachname()+", "+patient.getVorname());
-        id.setText(Integer.toString(patient.getId()));
+        id.setText(Integer.toString(patient.getZimmerNum()));
         sex.setText(patient.getSex());
         text.setText(patient.getBemerkung());
         //Implementation of Button
@@ -97,10 +91,8 @@ public class PatientData extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 updatedStatus = statusSpinner.get(i);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
@@ -109,17 +101,13 @@ public class PatientData extends AppCompatActivity {
             public void onClick(View view) {
                 patient.setBemerkung(text.getText().toString());
                 patient.setStatus(updatedStatus);
-                if(isMRT == true){
-                    patient.setMrt(1);
-                    //add Patient to MRT list
-                    if(ContainerAndGlobal.checkPatient(patient,ContainerAndGlobal.getMrtPatient())) {
-                        ContainerAndGlobal.addPatientMRT(patient);
-                    }
-                }else{
-                    patient.setMrt(0);
+                //Set Mrt
+                SetMrt(isMRT,patient);
+                if(updatedStatus.equals("Geheilt")) {
+                    ContainerAndGlobal.deletePatientDoctor(patient);
                 }
                 finish();
-                Toast.makeText(PatientData.this ," Note and Data saved ", Toast.LENGTH_LONG).show();
+                Toast.makeText(PatientData.this ,"Patient Data saved ", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -131,7 +119,6 @@ public class PatientData extends AppCompatActivity {
                 if(isChecked){
                     isMRT = true;
                     compoundButton.setText("Sent to MRT");
-
                 }else{
                     isMRT = false;
                     compoundButton.setText("No need MRT");
@@ -164,6 +151,19 @@ public class PatientData extends AppCompatActivity {
         }
     }
 
+    public void SetMrt(Boolean set, PatientClass patient){
+        //Set Mrt
+        if(set == true){
+            patient.setMrt(1);
+            //add Patient to MRT list
+            if(ContainerAndGlobal.checkPatient(patient,ContainerAndGlobal.getMrtPatient())) {
+                ContainerAndGlobal.addPatientMRT(patient);
+            }
+        }else{
+            patient.setMrt(0);
+        }
+    }
+
     public boolean check (String text, String text2){
         if(text.equals(text2)){
             return false;
@@ -171,5 +171,6 @@ public class PatientData extends AppCompatActivity {
             return true;
         }
     }
+
 
 }

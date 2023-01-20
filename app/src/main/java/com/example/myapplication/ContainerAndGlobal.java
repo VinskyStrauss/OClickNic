@@ -1,10 +1,14 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
-import org.json.JSONArray;
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,16 +19,62 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class ContainerAndGlobal {
     private static ArrayList<PatientClass> patientLists = new ArrayList<>();
     private static ArrayList<PatientClass> patientListsVerwalter = new ArrayList<>();
     private static ArrayList<PatientClass> mrtPatient = new ArrayList<>();
 
+    public static boolean isChangedSetting() {
+        return changedSetting;
+    }
+
+    public static void setChangedSetting(boolean changedSetting) {
+        ContainerAndGlobal.changedSetting = changedSetting;
+    }
+
+    private static boolean changedSetting = false;
+    
+    
+    //Max bed size
+    private static int maxBed = 100;
+    
+    public static boolean isFormContainsEmptyElement(ArrayList<EditText> elements){
+        boolean empty = false;
+        for(EditText e:elements){
+            if(e.getText().toString().isEmpty()){
+                e.setError("Cannot be blank");
+                empty = true;
+            }
+        }
+        return empty;
+    }
+
+    public static boolean isDataDuplicate(ArrayList<EditText> elements){
+        boolean duplicate = false;
+        int insurance = Integer.parseInt(elements.get(3).getText().toString());
+        String phone = elements.get(5).getText().toString();
+        int zimmerNummer = Integer.parseInt(elements.get(6).getText().toString());
+        for(PatientClass patient:patientListsVerwalter){
+            if(patient.getVersicherungsnummer() == insurance){
+                elements.get(3).setError("Insurance number already existed");
+                duplicate = true;
+            }
+            if(patient.getRufnummer().equals(phone)){
+                elements.get(5).setError("Phone number already existed");
+                duplicate = true;
+            }
+            if(patient.getZimmerNum() == zimmerNummer){
+                elements.get(6).setError("Bed is already occupied");
+                duplicate = true;
+            }
+        }
+        return duplicate;
+    }
+
+    
     public static ArrayList<PatientClass> getPatientLists() {
         return patientLists;
     }
@@ -107,7 +157,7 @@ public class ContainerAndGlobal {
 
     public static List<String> patientListeToStringList(ArrayList<PatientClass> patientList) {
         List<String> patientListe = new ArrayList<>();
-        patientList.forEach((patient) -> patientListe.add(patient.getVorname() + " " + patient.getNachname() + ", Zimmer:" + patient.getId()));
+        patientList.forEach((patient) -> patientListe.add(patient.getVorname() + " " + patient.getNachname() + ", Zimmer:" + patient.getZimmerNum()));
         return patientListe;
     }
 
@@ -161,6 +211,16 @@ public class ContainerAndGlobal {
         }
         return true;
     }
+
+    //Delete if patient is healed
+    public static void deletePatientDoctor(PatientClass patient){
+        for(int i=0; i<patientLists.size(); i++){
+            if(patientLists.get(i).getStatus().equals("Geheilt")){
+                patientLists.remove(i);
+            }
+        }
+    }
+
     //Delete after mrt test
     public static void deleteFromMrt(PatientClass patient){
         for(int i=0; i<mrtPatient.size(); i++){
@@ -201,6 +261,21 @@ public class ContainerAndGlobal {
             }
         }
         return -1;
+    }
+
+    /**
+     * A fucntion to save the new data
+     * @param context
+     */
+    public static void saveData(Context context){
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor =sharedPrefs.edit();
+        Gson gson =  new Gson();
+        String json;
+        json = gson.toJson(ContainerAndGlobal.getPatientListsVerwalter());
+        editor.apply();
+
+
     }
 }
 

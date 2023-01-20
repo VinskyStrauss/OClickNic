@@ -2,16 +2,13 @@ package com.example.myapplication;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         final HomeFragment homeFragment = new HomeFragment();
         final SettingFragment settingFragment = new SettingFragment();
         final InfoFragment infoFragment = new InfoFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, homeFragment).commit();
         //BottomNavigationBar
         bottomNavigationView = findViewById(R.id.bottomnavigationbar);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -60,11 +56,26 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return false;
         });
+        if(!ContainerAndGlobal.isChangedSetting()) {
+            bottomNavigationView.setSelectedItemId(R.id.home);
+        }else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, settingFragment).commit();
+            ContainerAndGlobal.setChangedSetting(false);
+        }
     }
 
     public void replaceFragment(Fragment x){
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, x).commit();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            ContainerAndGlobal.saveData(getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
