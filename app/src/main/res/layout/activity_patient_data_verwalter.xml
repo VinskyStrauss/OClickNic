@@ -31,7 +31,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nach-, Vorname:"
+        android:text="Last-, Firstname:"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="129dp"
         android:layout_alignParentLeft="true"
@@ -44,7 +44,7 @@
         android:id="@+id/sex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Geschlecht:"
+        android:text="Sex:"
         tools:layout_editor_absoluteX="58dp"
         tools:layout_editor_absoluteY="34dp"
         android:layout_alignParentLeft="true"
@@ -56,7 +56,7 @@
         android:id="@+id/Birth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Geburtstag:"
+        android:text="Birthdate:"
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="104dp"
         android:layout_alignParentLeft="true"
@@ -68,7 +68,7 @@
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adresse:"
+        android:text="Address:"
         tools:layout_editor_absoluteX="88dp"
         tools:layout_editor_absoluteY="178dp"
         android:layout_alignParentLeft="true"
@@ -92,7 +92,7 @@
         android:id="@+id/nummers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Versicherungsnummer:"
+        android:text="Insurance number:"
         tools:layout_editor_absoluteX="88dp"
         tools:layout_editor_absoluteY="178dp"
         android:layout_alignParentLeft="true"
@@ -167,7 +167,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
-        android:text="Zimmer-Nummer: " />
+        android:text="Bed number: " />
 
     <TextView
         android:layout_below="@+id/textView9"
@@ -187,7 +187,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
-        android:text="Rufnummer: " />
+        android:text="Phone number: " />
 
     <TextView
         android:layout_below="@+id/textView10"
@@ -199,13 +199,31 @@
         android:layout_marginTop="30dp"
         android:text="TextView" />
 
+    <TextView
+        android:id="@+id/note"
+        android:layout_below="@id/rufNummer"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note from Doctor:" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="323dp"
+        android:layout_height="124dp"
+        android:layout_below="@+id/note"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="9dp"
+        android:text="TextView" />
+
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:text="Discharge" />
 
 

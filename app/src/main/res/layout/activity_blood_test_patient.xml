@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BlutTestResultActivity">
-
-
+    tools:context=".BloodTestResultPatient">
     <ImageView
         android:id="@+id/back"
         android:layout_alignParentLeft="true"
@@ -111,15 +109,6 @@
         android:layout_marginTop="30dp"
         android:layout_toEndOf="@id/lymphozytenAbsolut"
         android:text="TextView" />
-
-    <Button
-        android:id="@+id/upload"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upload Test Result" />
 
 
 </RelativeLayout>

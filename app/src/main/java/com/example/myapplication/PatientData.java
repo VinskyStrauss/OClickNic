@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,8 +16,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class PatientData extends AppCompatActivity {
 
@@ -27,6 +28,8 @@ public class PatientData extends AppCompatActivity {
     String updatedStatus;
     //Boolean for Test
     Boolean isMRT = false;
+    //Boolean for BloodTest
+    Boolean isBloodTest = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +40,20 @@ public class PatientData extends AppCompatActivity {
         int position = ContainerAndGlobal.getPosition();
         PatientClass patient;
         patient=ContainerAndGlobal.getPatientLists().get(position);
+        if(patient.getSeemrt() == 1 && patient.getSeeBlood() == 0){
+            Toast.makeText(PatientData.this, " MRT Result availabe", Toast.LENGTH_SHORT).show();
+        }else if (patient.getSeemrt() == 0 && patient.getSeeBlood() == 1) {
+            Toast.makeText(PatientData.this, " Blood Test Result availabe", Toast.LENGTH_SHORT).show();
+        }else if(patient.getSeemrt() == 1 && patient.getSeeBlood() == 1){
+            Toast.makeText(PatientData.this, "MRT and Blood Test Result availabe", Toast.LENGTH_SHORT).show();
+        }
         TextView name = findViewById(R.id.vollname);
         TextView id = findViewById(R.id.ID);
         TextView sex = findViewById(R.id.geschlecht);
         EditText text = findViewById(R.id.editText);
         //Button
         Button save = findViewById(R.id.saveData);
-        //Switch
+        //CheckBox
         CheckBox mrt = findViewById(R.id.switch1);
         CheckBox blood = findViewById(R.id.switch2);
         //Image View
@@ -51,10 +61,10 @@ public class PatientData extends AppCompatActivity {
         //Array for spinner
         ArrayList<String> state = new ArrayList<>();
         //Add element to array
-        state.add("Krank");
+        state.add("Infected");
         state.add("Stabil");
-        state.add("Kritisch");
-        state.add("Geheilt");
+        state.add("Critical");
+        state.add("Healed");
         //Spinner
         Spinner status = findViewById(R.id.spinner);
         //List for spinner
@@ -86,6 +96,18 @@ public class PatientData extends AppCompatActivity {
 
             }
         });
+        bloodWert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(patient.getBloodValueClass() != null) {
+                    ContainerAndGlobal.setTmpPatient(patient);
+                    startActivity(new Intent(PatientData.this, BloodTestResultPatient.class));
+                }else{
+                    Toast.makeText(PatientData.this,"No Blood Test Result", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -103,11 +125,13 @@ public class PatientData extends AppCompatActivity {
                 patient.setStatus(updatedStatus);
                 //Set Mrt
                 SetMrt(isMRT,patient);
-                if(updatedStatus.equals("Geheilt")) {
+                //Set Blood Test
+                SetBloodTest(isBloodTest,patient);
+                if(updatedStatus.equals("Healed")) {
                     ContainerAndGlobal.deletePatientDoctor(patient);
                 }
                 finish();
-                Toast.makeText(PatientData.this ,"Patient Data saved ", Toast.LENGTH_LONG).show();
+                Toast.makeText(PatientData.this ,"Patient Data saved ", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -122,6 +146,19 @@ public class PatientData extends AppCompatActivity {
                 }else{
                     isMRT = false;
                     compoundButton.setText("No need MRT");
+                }
+            }
+        });
+        //for BloodTest
+        blood.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    isBloodTest = true;
+                    compoundButton.setText("Sent to Blood-Test");
+                }else{
+                    isBloodTest = false;
+                    compoundButton.setText("No need Blood-Test");
                 }
             }
         });
@@ -143,6 +180,12 @@ public class PatientData extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * function to add the state to the spinner
+     * @param arrayList
+     * @param list
+     * @param patient
+     */
     public void addState(ArrayList<String> arrayList ,List<String> list ,PatientClass patient) {
         for (int i = 0; i < arrayList.size(); i++) {
         if(check(arrayList.get(i),patient.getStatus()) == true) {
@@ -151,6 +194,11 @@ public class PatientData extends AppCompatActivity {
         }
     }
 
+    /**
+     * function to assign patient to mrt test
+     * @param set
+     * @param patient
+     */
     public void SetMrt(Boolean set, PatientClass patient){
         //Set Mrt
         if(set == true){
@@ -164,8 +212,25 @@ public class PatientData extends AppCompatActivity {
         }
     }
 
+    /**
+     * function to assign patient to mrt test
+     * @param set
+     * @param patient
+     */
+    public void SetBloodTest(Boolean set, PatientClass patient){
+        //Set Mrt
+        if(set == true){
+            patient.setBlood(1);
+            //add Patient to MRT list
+            if(ContainerAndGlobal.checkPatient(patient,ContainerAndGlobal.getBloodPatient())) {
+                ContainerAndGlobal.addPatientBloodTest(patient);
+            }
+        }else{
+            patient.setBlood(0);
+        }
+    }
     public boolean check (String text, String text2){
-        if(text.equals(text2)){
+        if(text.toLowerCase(Locale.ROOT).equals(text2.toLowerCase(Locale.ROOT))){
             return false;
         }else{
             return true;

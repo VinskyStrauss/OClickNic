@@ -3,7 +3,8 @@ package com.example.myapplication;
 public class PatientClass {
 
 
-    public PatientClass(int zimmerNummer, String nachname, String vorname, String adresse, String sex, int versicherungsnummer, String birthday, String rufnummer, String status, int mrt, String bemerkung, int seemrt) {
+    public PatientClass(int zimmerNummer, String nachname, String vorname, String adresse, String sex, int versicherungsnummer,
+                        String birthday, String rufnummer, String status, int mrt, String bemerkung, int seemrt, int blood, int seeBlood) {
         this.zimmerNum = zimmerNummer;
         this.nachname = nachname;
         this.vorname = vorname;
@@ -16,6 +17,8 @@ public class PatientClass {
         this.mrt = mrt;
         this.bemerkung = bemerkung;
         this.seemrt = seemrt;
+        this.blood = blood;
+        this.seeBlood = seeBlood;
     }
     private final int zimmerNum;
     private final String nachname;
@@ -29,7 +32,33 @@ public class PatientClass {
     private String bemerkung;
     private int mrt;
     private int seemrt;
+    private int blood;
+    private int seeBlood;
+    private BloodValueClass bloodValueClass;
 
+    public BloodValueClass getBloodValueClass() {
+        return bloodValueClass;
+    }
+
+    public void setBloodValueClass(BloodValueClass bloodValueClass) {
+        this.bloodValueClass = bloodValueClass;
+    }
+
+    public int getBlood() {
+        return blood;
+    }
+
+    public void setBlood(int blood) {
+        this.blood = blood;
+    }
+
+    public int getSeeBlood() {
+        return seeBlood;
+    }
+
+    public void setSeeBlood(int seeBlood) {
+        this.seeBlood = seeBlood;
+    }
 
     public int getZimmerNum() {
         return zimmerNum;

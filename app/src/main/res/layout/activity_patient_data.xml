@@ -33,7 +33,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nach-, Vorname:"
+        android:text="Last-, Firstname:"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="129dp"
         android:layout_alignParentLeft="true"
@@ -46,7 +46,7 @@
         android:id="@+id/sex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Geschlecht:"
+        android:text="Sex:"
         tools:layout_editor_absoluteX="58dp"
         tools:layout_editor_absoluteY="34dp"
         android:layout_alignParentLeft="true"
@@ -58,7 +58,7 @@
         android:id="@+id/patientID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Zimmer-Nummer:"
+        android:text="Bed number:"
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="104dp"
         android:layout_alignParentLeft="true"
@@ -82,7 +82,7 @@
         android:id="@+id/MRT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MRT-Bild"
+        android:text="MRT "
         android:layout_alignParentLeft="true"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="30dp"/>
@@ -95,7 +95,7 @@
         android:layout_marginLeft="116dp"
         android:layout_marginTop="-47dp"
         android:layout_toEndOf="@+id/MRT"
-        android:text="Blutwert" />
+        android:text="Blood Test" />
 
     <TextView
         android:id="@+id/vollname"

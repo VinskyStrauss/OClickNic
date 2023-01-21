@@ -6,24 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".BlutTestListe">
 
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
+
     <TextView
+        android:layout_toEndOf="@+id/back"
         android:id="@+id/bluttestliste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
         android:text="Blut-Test Liste"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="21dp"
         tools:layout_editor_absoluteY="18dp" />
 
     <ListView
         android:layout_below="@+id/bluttestliste"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listview"
         style="@style/ListViewStyle"/>
+
+
 
 </RelativeLayout>

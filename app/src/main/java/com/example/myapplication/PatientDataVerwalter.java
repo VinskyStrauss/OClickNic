@@ -1,13 +1,13 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class PatientDataVerwalter extends AppCompatActivity {
 
@@ -24,6 +24,7 @@ public class PatientDataVerwalter extends AppCompatActivity {
         TextView insurance = findViewById(R.id.textView9);
         TextView zimmer = findViewById(R.id.textView10);
         TextView telephone = findViewById(R.id.textView12);
+        TextView note = findViewById(R.id.textView13);
         //Object von Patient
         PatientClass patient;
         patient=ContainerAndGlobal.getPatientListsVerwalter().get(position);
@@ -40,6 +41,7 @@ public class PatientDataVerwalter extends AppCompatActivity {
         insurance.setText(Integer.toString(patient.getVersicherungsnummer()));
         zimmer.setText(Integer.toString(patient.getZimmerNum()));
         telephone.setText(patient.getRufnummer());
+        note.setText(patient.getBemerkung());
         //Button Implementation
         entlassen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +49,9 @@ public class PatientDataVerwalter extends AppCompatActivity {
                 if(ContainerAndGlobal.checkDischarged(patient)){
                     ContainerAndGlobal.deletePatient(patient);
                     finish();
-                    Toast.makeText(PatientDataVerwalter.this ," Patient discharged! ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PatientDataVerwalter.this ," Patient discharged! ", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(PatientDataVerwalter.this, " Patient still sick! ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PatientDataVerwalter.this, " Patient still sick! ", Toast.LENGTH_SHORT).show();
                 }
             }
         });

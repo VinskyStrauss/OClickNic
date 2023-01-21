@@ -8,10 +8,12 @@
             "Adresse":"Berliner Allee 7, 64295, Darmstadt ",
             "Rufnummer":"555555555",
             "Geschlecht":"Männlich",
-            "Status": "Krank",
+            "Status": "Stabil",
             "MRT": "0",
             "Description": "",
-            "SeeMRT": "0"
+            "SeeMRT": "1",
+            "Blood": "0",
+            "seeBlood": "0"
       },
       {
             "Patient ID":"2",
@@ -22,10 +24,12 @@
             "Adresse":"Am Karlshof 3d, 64289, Darmstadt ",
             "Rufnummer":"111111111",
             "Geschlecht":"Weiblich",
-            "Status": "Krank",
+            "Status": "Stabil",
             "MRT": "0",
             "Description": "",
-            "SeeMRT": "0"
+            "SeeMRT": "0",
+            "Blood": "0",
+            "seeBlood": "0"
       },
       {
             "Patient ID":"3",
@@ -36,10 +40,12 @@
             "Adresse":"Havelstraße 7, 64295, Darmstadt ",
             "Rufnummer":"333333333",
             "Geschlecht":"Männlich",
-            "Status": "Krank",
+            "Status": "Stabil",
             "MRT": "0",
             "Description": "",
-            "SeeMRT": "0"
+            "SeeMRT": "0",
+            "Blood": "0",
+            "seeBlood": "0"
       },
       {
             "Patient ID":"4",
@@ -53,6 +59,8 @@
             "Status": "Geheilt",
             "MRT": "0",
             "Description": "",
-            "SeeMRT": "0"
+            "SeeMRT": "0",
+            "Blood": "0",
+            "seeBlood": "0"
       }
 ]
