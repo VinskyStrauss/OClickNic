@@ -1,15 +1,13 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 
 public class HomeFragment extends Fragment {
@@ -26,9 +24,9 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
         //Declare Button
-        Button arzt  =  view.findViewById(R.id.doctor);
-        Button lab =  view.findViewById(R.id.labor);
-        Button administration = view.findViewById(R.id.verwalter);
+        ImageView arzt  =  view.findViewById(R.id.doctor);
+        ImageView lab =  view.findViewById(R.id.labor);
+        ImageView administration = view.findViewById(R.id.verwalter);
         //make Fragment
         final ArztMenu arztFragment = new ArztMenu();
         final LaborMenu laborMenu = new LaborMenu();

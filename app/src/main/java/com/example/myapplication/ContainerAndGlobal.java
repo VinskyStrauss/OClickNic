@@ -70,19 +70,19 @@ public class ContainerAndGlobal {
     public static boolean isDataDuplicate(ArrayList<EditText> elements){
         boolean duplicate = false;
         int insurance = Integer.parseInt(elements.get(3).getText().toString());
-        String phone = elements.get(5).getText().toString();
-        int zimmerNummer = Integer.parseInt(elements.get(6).getText().toString());
+        String phone = elements.get(4).getText().toString();
+        int zimmerNummer = Integer.parseInt(elements.get(5).getText().toString());
         for(PatientClass patient:patientListsVerwalter){
             if(patient.getVersicherungsnummer() == insurance){
                 elements.get(3).setError("Insurance number already existed");
                 duplicate = true;
             }
             if(patient.getRufnummer().equals(phone)){
-                elements.get(5).setError("Phone number already existed");
+                elements.get(4).setError("Phone number already existed");
                 duplicate = true;
             }
             if(patient.getZimmerNum() == zimmerNummer){
-                elements.get(6).setError("Bed is already occupied");
+                elements.get(5).setError("Bed is already occupied");
                 duplicate = true;
             }
         }
@@ -337,7 +337,7 @@ public class ContainerAndGlobal {
      */
     public static void deletePatientDoctor(PatientClass patient){
         for(int i=0; i<patientLists.size(); i++){
-            if(patientLists.get(i).getStatus().equals("Geheilt")){
+            if(patientLists.get(i).getStatus().equals("Healed")){
                 patientLists.remove(i);
             }
         }
@@ -373,7 +373,7 @@ public class ContainerAndGlobal {
      * @return boolean
      */
     public static boolean checkDischarged(PatientClass patient){
-        if(patient.getStatus().equals("Geheilt")){
+        if(patient.getStatus().equals("Healed")){
             return true;
         }
         return false;

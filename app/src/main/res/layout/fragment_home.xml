@@ -18,36 +18,55 @@
         android:textSize="25dp"
         android:textStyle="bold" />
 
-    <Button
+
+    <ImageView
         android:id="@+id/doctor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
-        android:width="150dp"
-        android:height="75dp"
+        android:src="@mipmap/doctor" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/doctor"
+        android:layout_centerHorizontal="true"
         android:text="Doctor" />
 
-    <Button
+    <ImageView
         android:id="@+id/labor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/doctor"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:width="150dp"
-        android:height="75dp"
+        android:layout_marginTop="83dp"
+        android:src="@mipmap/lab" />
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_below="@+id/labor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:text="Lab" />
 
-    <Button
+    <ImageView
         android:id="@+id/verwalter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labor"
+        android:layout_below="@+id/labor"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:width="150dp"
-        android:height="75dp"
+        android:layout_marginTop="75dp"
+        android:src="@mipmap/admin_round" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/verwalter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Admin" />
+
 
 </RelativeLayout>

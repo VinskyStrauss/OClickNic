@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.home);
         //implementation of BottomNavigationBar
         bottomNavigationView.setOnItemSelectedListener(item ->  {
-
                 switch (item.getItemId()){
                     case R.id.home:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, homeFragment).commit();
