@@ -29,13 +29,10 @@
         tools:layout_editor_absoluteX="12dp"
         tools:layout_editor_absoluteY="16dp" />
 
-    <ListView
-        android:layout_below="@+id/patientlist"
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_item"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/ListViewStyle"
-        />
+        android:layout_below="@+id/patientlist"
+        android:layout_marginTop="15dp" />
 </RelativeLayout>

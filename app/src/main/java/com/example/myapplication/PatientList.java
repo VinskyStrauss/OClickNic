@@ -4,21 +4,16 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.List;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 @SuppressLint("SimpleDateFormat")
-public class PatientList extends AppCompatActivity {
-    ListView list;
-    List<String> patientListe;
+public class PatientList extends AppCompatActivity implements RecyclerViewInterface {
+    RecyclerView list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,36 +33,23 @@ public class PatientList extends AppCompatActivity {
             }
         });
         list =  findViewById(R.id.list_item);
-        patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getPatientLists());
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
-        list.setAdapter(arrayAdapter);
+        ListAdapter listAdapter = new ListAdapter(this, ContainerAndGlobal.getPatientLists(), this);
+        list.setAdapter(listAdapter);
+        list.setLayoutManager(new LinearLayoutManager(this));
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-              ContainerAndGlobal.savePosition(position);
-              newActivity(position);
-            };
-        });
-
-        if(patientListe.size() == 0){
-            Toast.makeText(PatientList.this, "No Patient Available", Toast.LENGTH_LONG).show();
-        }
-
-    }
-
-    private View.OnClickListener newActivity(int patientPos){
-                startActivity(new Intent(PatientList.this,PatientData.class));
-        return null;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getPatientLists());
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
-        list.setAdapter(arrayAdapter);
+        ListAdapter listAdapter = new ListAdapter(this, ContainerAndGlobal.getPatientLists(),this);
+        list.setAdapter(listAdapter);
     }
 
 
+    @Override
+    public void onItemClick(int position) {
+        ContainerAndGlobal.setPatientSearch(ContainerAndGlobal.getPatientLists().get(position));
+        startActivity(new Intent(PatientList.this,PatientData.class));
+    }
 }

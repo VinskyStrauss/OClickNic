@@ -12,13 +12,15 @@
         android:layout_height="match_parent"></FrameLayout>
 
     <SearchView
+        android:background="@drawable/item_curved_night"
         android:id="@+id/search_bar"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:queryHint="search here"
         android:iconifiedByDefault="false"
+        android:layout_marginTop="40dp"
+        android:elevation="3dp"
         android:queryBackground="@null"/>
 
     <Button
@@ -39,8 +41,6 @@
         android:text="Patient List"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
-
-
 
 
 

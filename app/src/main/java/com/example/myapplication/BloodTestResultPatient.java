@@ -21,21 +21,25 @@ public class BloodTestResultPatient extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_test_patient);
-        //Assign Textview ID
-        date = findViewById(R.id.dateText);
-        leukozyten = findViewById(R.id.leukozytenText);
-        lymphozytenPer = findViewById(R.id.lymphozytenPercentText);
-        lymphozytenAbs = findViewById(R.id.lymphozytenAbsolutText);
-        back = findViewById(R.id.back);
-        //Patient
-        patientClass = ContainerAndGlobal.getTmpPatient();
-        //Blood Value
-        bloodValueClass = patientClass.getBloodValueClass();
-        //Set Textview text
-        date.setText(bloodValueClass.getDatum());
-        leukozyten.setText(String.valueOf(bloodValueClass.getLeukozyten()));
-        lymphozytenPer.setText(String.valueOf(bloodValueClass.getLymphozytenPercent()));
-        lymphozytenAbs.setText(String.valueOf(bloodValueClass.getLymphozytenAbsolut()));
+        try {
+            //Assign Textview ID
+            date = findViewById(R.id.dateText);
+            leukozyten = findViewById(R.id.leukozytenText);
+            lymphozytenPer = findViewById(R.id.lymphozytenPercentText);
+            lymphozytenAbs = findViewById(R.id.lymphozytenAbsolutText);
+            back = findViewById(R.id.back);
+            //Patient
+            patientClass = ContainerAndGlobal.getTmpPatient();
+            //Blood Value
+            bloodValueClass = patientClass.getBloodValueClass();
+            //Set Textview text
+            date.setText(bloodValueClass.getDatum());
+            leukozyten.setText(String.valueOf(bloodValueClass.getLeukozyten()));
+            lymphozytenPer.setText(String.valueOf(bloodValueClass.getLymphozytenPercent()));
+            lymphozytenAbs.setText(String.valueOf(bloodValueClass.getLymphozytenAbsolut()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //Back button
         back.setOnClickListener(new View.OnClickListener() {

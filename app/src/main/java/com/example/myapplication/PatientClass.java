@@ -4,7 +4,7 @@ public class PatientClass {
 
 
     public PatientClass(int zimmerNummer, String nachname, String vorname, String adresse, String sex, int versicherungsnummer,
-                        String birthday, String rufnummer, String status, int mrt, String bemerkung, int seemrt, int blood, int seeBlood) {
+                        String birthday, int rufnummer, String status, int mrt, String bemerkung, int seemrt, int blood, int seeBlood) {
         this.zimmerNum = zimmerNummer;
         this.nachname = nachname;
         this.vorname = vorname;
@@ -27,7 +27,7 @@ public class PatientClass {
     private final String sex;
     private final int versicherungsnummer;
     private final String birthday;
-    private final String rufnummer;
+    private final int rufnummer;
     private String status;
     private String bemerkung;
     private int mrt;
@@ -88,7 +88,7 @@ public class PatientClass {
         return birthday;
     }
 
-    public String getRufnummer() {
+    public int getRufnummer() {
         return rufnummer;
     }
 

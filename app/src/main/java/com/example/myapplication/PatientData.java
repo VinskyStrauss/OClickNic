@@ -30,6 +30,8 @@ public class PatientData extends AppCompatActivity {
     Boolean isMRT = false;
     //Boolean for BloodTest
     Boolean isBloodTest = false;
+    PatientClass patient;
+    List<String> statusSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,15 +39,15 @@ public class PatientData extends AppCompatActivity {
         //Initiliaze the Object
         Button mrtTest = findViewById(R.id.MRT);
         Button bloodWert = findViewById(R.id.Blutwert);
-        int position = ContainerAndGlobal.getPosition();
-        PatientClass patient;
-        patient=ContainerAndGlobal.getPatientLists().get(position);
+        patient=ContainerAndGlobal.getPatientSearch();
         if(patient.getSeemrt() == 1 && patient.getSeeBlood() == 0){
             Toast.makeText(PatientData.this, " MRT Result availabe", Toast.LENGTH_SHORT).show();
         }else if (patient.getSeemrt() == 0 && patient.getSeeBlood() == 1) {
             Toast.makeText(PatientData.this, " Blood Test Result availabe", Toast.LENGTH_SHORT).show();
         }else if(patient.getSeemrt() == 1 && patient.getSeeBlood() == 1){
             Toast.makeText(PatientData.this, "MRT and Blood Test Result availabe", Toast.LENGTH_SHORT).show();
+        }else if (patient.getSeemrt() == 0 && patient.getSeeBlood() == 0){
+            Toast.makeText(PatientData.this, "No Test Result availabe", Toast.LENGTH_SHORT).show();
         }
         TextView name = findViewById(R.id.vollname);
         TextView id = findViewById(R.id.ID);
@@ -68,7 +70,7 @@ public class PatientData extends AppCompatActivity {
         //Spinner
         Spinner status = findViewById(R.id.spinner);
         //List for spinner
-        List<String> statusSpinner =  new ArrayList<>();
+            statusSpinner =  new ArrayList<>();
             statusSpinner.add(0,patient.getStatus());
             addState(state,statusSpinner,patient);
         //Set Spinner

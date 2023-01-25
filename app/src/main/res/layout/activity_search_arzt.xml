@@ -20,6 +20,7 @@
 
 
     <SearchView
+        android:background="@drawable/item_curved_night"
         android:layout_toRightOf="@id/back"
         android:id="@+id/search_bar"
         android:layout_width="393dp"
@@ -30,14 +31,11 @@
         android:layout_centerHorizontal="true"
         android:queryHint="search here" />
 
-    <ListView
-        android:layout_below="@id/search_bar"
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/ListViewStyle"
-        >
-
-    </ListView>
+        android:layout_below="@+id/search_bar"
+        android:layout_marginTop="15dp" />
 
 </RelativeLayout>

@@ -31,13 +31,12 @@
         android:layout_marginLeft="35dp"
         android:textSize="20dp"
         android:text="MRT-Test Liste" />
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/mrttestliste"
-        android:id="@+id/testList"
-        style="@style/ListViewStyle"
-        />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_item_mrt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mrttestliste"
+        android:layout_marginTop="15dp" />
 
 </RelativeLayout>

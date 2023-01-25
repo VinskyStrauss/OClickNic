@@ -3,20 +3,16 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
 
 
-
-public class MrtTestListe extends AppCompatActivity {
-    List<String> patientListe;
-    ListView listView;
+public class MrtTestListe extends AppCompatActivity implements RecyclerViewInterface{
+    RecyclerView list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,35 +28,24 @@ public class MrtTestListe extends AppCompatActivity {
         });
 
         //Check the result from MRT test
-        listView = findViewById(R.id.testList);
-        patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getMrtPatient());
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
-        listView.setAdapter(arrayAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                ContainerAndGlobal.savePosition(position);
-                newActivity(position);
-            };
-        });
+        list =  findViewById(R.id.list_item_mrt);
+        TestListAdapter listAdapter = new TestListAdapter(this, ContainerAndGlobal.getMrtPatient(), this);
+        list.setAdapter(listAdapter);
+        list.setLayoutManager(new LinearLayoutManager(this));
 
         }
 
     @Override
     protected void onResume() {
         super.onResume();
-        patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getMrtPatient());
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
-        listView.setAdapter(arrayAdapter);
+        TestListAdapter listAdapter = new TestListAdapter(this, ContainerAndGlobal.getMrtPatient(),this);
+        list.setAdapter(listAdapter);
     }
 
-    /**
-     * function to start a new Activity
-     * @param patientPos
-     * @return
-     */
-    private View.OnClickListener newActivity(int patientPos){
+
+    @Override
+    public void onItemClick(int position) {
+        ContainerAndGlobal.savePosition(position);
         startActivity(new Intent(MrtTestListe.this,MrtResultActivity.class));
-        return null;
     }
 }

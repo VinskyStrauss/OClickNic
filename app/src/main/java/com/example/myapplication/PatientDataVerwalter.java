@@ -15,7 +15,6 @@ public class PatientDataVerwalter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_data_verwalter);
-        int position = ContainerAndGlobal.getPosition();
         TextView name = findViewById(R.id.textView4);
         TextView sex = findViewById(R.id.textView5);
         TextView birthdate = findViewById(R.id.textView6);
@@ -27,7 +26,7 @@ public class PatientDataVerwalter extends AppCompatActivity {
         TextView note = findViewById(R.id.textView13);
         //Object von Patient
         PatientClass patient;
-        patient=ContainerAndGlobal.getPatientListsVerwalter().get(position);
+        patient=ContainerAndGlobal.getPatientSearch();
         //Button
         Button entlassen = findViewById(R.id.button3);
         //Back
@@ -40,7 +39,7 @@ public class PatientDataVerwalter extends AppCompatActivity {
         status.setText(patient.getStatus());
         insurance.setText(Integer.toString(patient.getVersicherungsnummer()));
         zimmer.setText(Integer.toString(patient.getZimmerNum()));
-        telephone.setText(patient.getRufnummer());
+        telephone.setText(Integer.toString(patient.getRufnummer()));
         note.setText(patient.getBemerkung());
         //Button Implementation
         entlassen.setOnClickListener(new View.OnClickListener() {

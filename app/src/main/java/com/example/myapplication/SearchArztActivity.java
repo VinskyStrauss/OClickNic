@@ -3,18 +3,18 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class SearchArztActivity extends AppCompatActivity {
+public class SearchArztActivity extends AppCompatActivity implements RecyclerViewInterface {
 
+    private ListAdapter listAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +22,6 @@ public class SearchArztActivity extends AppCompatActivity {
         //Declare Variable
         SearchView search = findViewById(R.id.search_bar);
         ImageView back = findViewById(R.id.back);
-
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,10 +30,12 @@ public class SearchArztActivity extends AppCompatActivity {
         });
 
         //List of Patient
-        ListView list =  findViewById(R.id.list_item);
-        List<String> patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getPatientLists());
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_expandable_list_item_1,patientListe);
-        list.setAdapter(arrayAdapter);
+        RecyclerView list =  findViewById(R.id.list_item);
+        list.setLayoutManager(new LinearLayoutManager(this));
+        ContainerAndGlobal.getFilteredList().clear();
+        ContainerAndGlobal.getFilteredList().addAll(ContainerAndGlobal.getPatientLists());
+        listAdapter = new ListAdapter(this, ContainerAndGlobal.getFilteredList(), this);
+        list.setAdapter(listAdapter);
         //Search bar
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -45,26 +45,40 @@ public class SearchArztActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                arrayAdapter.getFilter().filter(newText);
+                filter(newText);
                 return false;
             }
         });
-        //Set tap on List
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String name = adapterView.getItemAtPosition(position).toString();
-                name = name.split(",",0)[0];
-                int pos = ContainerAndGlobal.searchPatient(name);
-                ContainerAndGlobal.savePosition(pos);
-                newActivity(pos);
-            };
-        });
-
 
     }
-    private View.OnClickListener newActivity(int patientPos){
+
+    /**
+     * Filtering the list that contains the word from the searched words
+     * @param text is the current searched address
+     */
+    private void filter(String text) {
+        try {
+            // creating a new array list to filter our data.
+            ArrayList<PatientClass> filteredList = new ArrayList<>();
+
+            // running a for loop to compare elements.
+            for (PatientClass item : ContainerAndGlobal.getFilteredList()) {
+                // checking if the entered string matched with any item of our recycler view.
+                String name = item.getNachname() + " , " + item.getVorname();
+                String zimmer = " Zimmer Nummer: " + Integer.toString(item.getZimmerNum());
+                if (name.toLowerCase().contains(text.toLowerCase()) || zimmer.toLowerCase().contains(text.toLowerCase())) {
+                    // if the item is matched we are
+                    // adding it to our filtered list.
+                    filteredList.add(item);
+                }
+            }
+            listAdapter.filterList(filteredList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void onItemClick(int position) {
         startActivity(new Intent(SearchArztActivity.this,PatientData.class));
-        return null;
     }
 }

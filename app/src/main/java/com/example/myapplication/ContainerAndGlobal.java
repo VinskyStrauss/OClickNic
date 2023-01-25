@@ -27,9 +27,11 @@ public class ContainerAndGlobal {
     private static ArrayList<PatientClass> mrtPatient = new ArrayList<>();
     private static ArrayList<PatientClass> bloodPatient = new ArrayList<>();
     private static ArrayList<BloodValueClass> bloodValue = new ArrayList<>();
+    private static final ArrayList<PatientClass> filteredList = new ArrayList<>();
     private static boolean changedSetting = false;
     private static PatientClass tmpPatient;
     private static boolean darkmode = false;
+    private static PatientClass patientSearch;
     public static boolean isChangedSetting() {
         return changedSetting;
     }
@@ -45,6 +47,7 @@ public class ContainerAndGlobal {
     public static void setTmpPatient(PatientClass tmpPatient) {
         ContainerAndGlobal.tmpPatient = tmpPatient;
     }
+
 
     /**
      * function to check is the form is filled correctly or not
@@ -70,14 +73,14 @@ public class ContainerAndGlobal {
     public static boolean isDataDuplicate(ArrayList<EditText> elements){
         boolean duplicate = false;
         int insurance = Integer.parseInt(elements.get(3).getText().toString());
-        String phone = elements.get(4).getText().toString();
+        int phone = Integer.parseInt(elements.get(4).getText().toString());
         int zimmerNummer = Integer.parseInt(elements.get(5).getText().toString());
         for(PatientClass patient:patientListsVerwalter){
             if(patient.getVersicherungsnummer() == insurance){
                 elements.get(3).setError("Insurance number already existed");
                 duplicate = true;
             }
-            if(patient.getRufnummer().equals(phone)){
+            if(patient.getRufnummer() == phone){
                 elements.get(4).setError("Phone number already existed");
                 duplicate = true;
             }
@@ -129,6 +132,15 @@ public class ContainerAndGlobal {
         return bloodValue;
     }
 
+
+    /**
+     * getter function for filtered List
+     * @return
+     */
+    public static ArrayList<PatientClass> getFilteredList() {
+        return filteredList;
+    }
+
     /**
      * position for patient
      */
@@ -170,7 +182,7 @@ public class ContainerAndGlobal {
      * @param patient
      */
     public static void addPatient(PatientClass patient) {
-        if (patient.getStatus().toLowerCase(Locale.ROOT).equals("krank") ||patient.getStatus().toLowerCase(Locale.ROOT).equals("kritisch")||patient.getStatus().toLowerCase(Locale.ROOT).equals("stabil") ) {
+        if (!patient.getStatus().toLowerCase(Locale.ROOT).equals("healed") ) {
             patientLists.add(patient);
         }
         patientListsVerwalter.add(patient);
@@ -207,7 +219,7 @@ public class ContainerAndGlobal {
                 (String) patientclass.get("Geschlecht"),
                 Integer.parseInt(patientclass.get("Versicherungsnummer").toString()),
                 (String) patientclass.get("Geburtstag"),
-                (String) patientclass.get("Rufnummer"),
+                Integer.parseInt(patientclass.get("Rufnummer").toString()),
                 (String) patientclass.get("Status"),
                 Integer.parseInt(patientclass.get("MRT").toString()),
                 (String) patientclass.get("Description"),
@@ -268,6 +280,15 @@ public class ContainerAndGlobal {
 
     public static void setDarkmode(boolean darkmode) {
         ContainerAndGlobal.darkmode = darkmode;
+    }
+
+
+    public static void setPatientSearch(PatientClass patientSearch){
+        ContainerAndGlobal.patientSearch  = patientSearch;
+    }
+
+    public static PatientClass getPatientSearch(){
+        return patientSearch;
     }
 
     /**
