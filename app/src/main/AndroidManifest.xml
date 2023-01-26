@@ -48,7 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".PatientList"
+            android:name=".PatientDaten"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

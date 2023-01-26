@@ -1,116 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddPatient">
 
+
+    <TextView
+        android:id="@+id/showname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="58dp"
+        android:text="@string/nach_vorname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <TextView
         android:id="@+id/name"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="135dp"
         android:text="Nach-, Vorname"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_below="@+id/name"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/adresse"
-        android:layout_below="@id/editTextTextPersonName2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adresse" />
-
-    <EditText
-        android:id="@+id/editAdresse"
-        android:layout_below="@id/adresse"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
+        android:layout_marginBottom="18dp"
+        android:text="Adresse"
+        app:layout_constraintBottom_toTopOf="@+id/krankenkasse"
+        app:layout_constraintStart_toStartOf="@+id/krankenkasse" />
 
     <TextView
         android:id="@+id/krankenkasse"
-        android:layout_below="@id/editAdresse"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Versicherungsnummer" />
-
-    <EditText
-        android:id="@+id/krankenkassenummer"
-        android:layout_below="@id/krankenkasse"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="59dp"
+        android:text="Versicherungsnummer"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/birthDate" />
 
     <TextView
         android:id="@+id/birthDate"
-        android:layout_below="@id/krankenkassenummer"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Geburtsdatum" />
-
-    <EditText
-        android:id="@+id/editbirthDate"
-        android:layout_below="@id/birthDate"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date" />
+        android:layout_marginTop="19dp"
+        android:text="Geburtsdatum"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
-        android:id="@+id/Datum"
-        android:layout_below="@id/editbirthDate"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Datum" />
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="19dp"
+        android:text="Geburtsdatum: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showname" />
 
-    <EditText
-        android:id="@+id/editDatum"
-        android:layout_below="@id/Datum"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date" />
+        android:layout_marginStart="7dp"
+        android:text="Versicherungsnummer: "
+        app:layout_constraintBaseline_toBaselineOf="@+id/krankenkasse"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Einfuegen" />
-</RelativeLayout>
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Adresse: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
