@@ -27,7 +27,9 @@
         android:textStyle="bold"
         android:textSize="30dp"
         tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        android:queryBackground="@null"
+        android:iconifiedByDefault="false"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_item"

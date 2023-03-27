@@ -12,11 +12,12 @@
         android:id="@+id/search_bar"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:queryHint="search here"
+        android:iconifiedByDefault="false"
         android:layout_marginTop="40dp"
         android:elevation="3dp"
-        android:iconifiedByDefault="false"
-        android:layout_centerHorizontal="true"
-        android:queryHint="search here" />
+        android:queryBackground="@null"/>
 
     <Button
         android:id="@+id/patientlist"

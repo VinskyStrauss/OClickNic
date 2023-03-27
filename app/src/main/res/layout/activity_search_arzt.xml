@@ -29,7 +29,8 @@
         android:elevation="3dp"
         android:iconifiedByDefault="false"
         android:layout_centerHorizontal="true"
-        android:queryHint="search here" />
+        android:queryHint="search here"
+        android:queryBackground="@null"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_item"
