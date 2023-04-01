@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>BlutTestListe.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #629755; font-style: italic;}
+.s4 { color: #629755; font-weight: bold; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+BlutTestListe.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myapplication</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.AdapterView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ArrayAdapter</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ListView</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">BlutTestListe </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+    <span class="s1">List&lt;String &gt; patientListe</span><span class="s0">;</span>
+    <span class="s1">ListView listView</span><span class="s0">;</span>
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_blut_test_liste)</span><span class="s0">;</span>
+        <span class="s2">//Back</span>
+        <span class="s1">ImageView back = findViewById(R.id.back)</span><span class="s0">;</span>
+        <span class="s1">back.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">finish()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s1">listView = findViewById(R.id.listview)</span><span class="s0">;</span>
+        <span class="s1">patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getBloodPatient())</span><span class="s0">;</span>
+        <span class="s1">ArrayAdapter arrayAdapter = </span><span class="s0">new </span><span class="s1">ArrayAdapter(getApplicationContext()</span><span class="s0">, </span><span class="s1">android.R.layout.simple_expandable_list_item_1</span><span class="s0">,</span><span class="s1">patientListe)</span><span class="s0">;</span>
+        <span class="s1">listView.setAdapter(arrayAdapter)</span><span class="s0">;</span>
+        <span class="s1">listView.setOnItemClickListener(</span><span class="s0">new </span><span class="s1">AdapterView.OnItemClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onItemClick(AdapterView&lt;?&gt; adapterView</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">position</span><span class="s0">, long </span><span class="s1">l) {</span>
+                <span class="s1">ContainerAndGlobal.savePosition(position)</span><span class="s0">;</span>
+                <span class="s1">newActivity()</span><span class="s0">;</span>
+            <span class="s1">}</span><span class="s0">;</span>
+
+        <span class="s1">})</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onResume() {</span>
+        <span class="s0">super</span><span class="s1">.onResume()</span><span class="s0">;</span>
+        <span class="s1">patientListe = ContainerAndGlobal.patientListeToStringList(ContainerAndGlobal.getBloodPatient())</span><span class="s0">;</span>
+        <span class="s1">ArrayAdapter arrayAdapter = </span><span class="s0">new </span><span class="s1">ArrayAdapter(getApplicationContext()</span><span class="s0">, </span><span class="s1">android.R.layout.simple_expandable_list_item_1</span><span class="s0">,</span><span class="s1">patientListe)</span><span class="s0">;</span>
+        <span class="s1">listView.setAdapter(arrayAdapter)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">/**</span>
+     <span class="s3">* function to start a new Activity</span>
+     <span class="s3">* </span><span class="s4">@param</span>
+     <span class="s3">* </span><span class="s4">@return</span>
+     <span class="s3">*/</span>
+    <span class="s0">private </span><span class="s1">View.OnClickListener newActivity(){</span>
+        <span class="s1">startActivity(</span><span class="s0">new </span><span class="s1">Intent(BlutTestListe.</span><span class="s0">this,</span><span class="s1">BlutTestResultActivity.</span><span class="s0">class</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

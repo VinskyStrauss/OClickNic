@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>AddPatient.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AddPatient.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myapplication</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">AddPatient </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+    <span class="s2">//Button</span>
+    <span class="s1">Button add</span><span class="s0">;</span>
+    <span class="s1">ImageView back</span><span class="s0">;</span>
+    <span class="s2">//Edit Text</span>
+    <span class="s1">EditText nachname</span><span class="s0">;</span>
+    <span class="s1">EditText vorname</span><span class="s0">;</span>
+    <span class="s1">EditText address</span><span class="s0">;</span>
+    <span class="s1">EditText krankKasse</span><span class="s0">;</span>
+    <span class="s1">EditText geburtsTag</span><span class="s0">;</span>
+    <span class="s1">EditText rufNummer</span><span class="s0">;</span>
+    <span class="s1">EditText zimmerNummerEditText</span><span class="s0">;</span>
+    <span class="s1">EditText sex</span><span class="s0">;</span>
+    <span class="s2">//Array List</span>
+    <span class="s1">ArrayList&lt;EditText&gt; elements = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.add_patient)</span><span class="s0">;</span>
+        <span class="s2">//Declare edit Text and other Object</span>
+        <span class="s1">nachname = findViewById(R.id.editTextTextPersonName2)</span><span class="s0">;</span>
+        <span class="s1">vorname = findViewById(R.id.editVorname)</span><span class="s0">;</span>
+        <span class="s1">address = findViewById(R.id.editAdresse)</span><span class="s0">;</span>
+        <span class="s1">krankKasse = findViewById(R.id.krankenkassenummer)</span><span class="s0">;</span>
+        <span class="s1">geburtsTag = findViewById(R.id.editbirthDate)</span><span class="s0">;</span>
+        <span class="s1">rufNummer = findViewById(R.id.editNumber)</span><span class="s0">;</span>
+        <span class="s1">zimmerNummerEditText = findViewById(R.id.editTextTextPersonName)</span><span class="s0">;</span>
+        <span class="s1">sex = findViewById(R.id.editSex)</span><span class="s0">;</span>
+        <span class="s2">//Push editText to array</span>
+        <span class="s1">elements.add(nachname)</span><span class="s0">;</span>
+        <span class="s1">elements.add(vorname)</span><span class="s0">;</span>
+        <span class="s1">elements.add(address)</span><span class="s0">;</span>
+        <span class="s1">elements.add(krankKasse)</span><span class="s0">;</span>
+        <span class="s1">elements.add(geburtsTag)</span><span class="s0">;</span>
+        <span class="s1">elements.add(rufNummer)</span><span class="s0">;</span>
+        <span class="s1">elements.add(zimmerNummerEditText)</span><span class="s0">;</span>
+        <span class="s1">elements.add(sex)</span><span class="s0">;</span>
+        <span class="s2">//Button</span>
+        <span class="s1">back = findViewById(R.id.imageButton)</span><span class="s0">;</span>
+        <span class="s1">back.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">finish()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">add = findViewById(R.id.submit)</span><span class="s0">;</span>
+        <span class="s1">add.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s0">if </span><span class="s1">(ContainerAndGlobal.isFormContainsEmptyElement(elements)) {</span>
+                    <span class="s1">Toast.makeText(AddPatient.</span><span class="s0">this, </span><span class="s3">&quot; Please fill the data&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                <span class="s1">} </span><span class="s0">else if </span><span class="s1">(ContainerAndGlobal.isDataDuplicate(elements)) {</span>
+                    <span class="s1">Toast.makeText(AddPatient.</span><span class="s0">this, </span><span class="s3">&quot; Please check the data again&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s2">//Set all value</span>
+                    <span class="s1">String nachName = nachname.getText().toString()</span><span class="s0">;</span>
+                    <span class="s1">String vorName = vorname.getText().toString()</span><span class="s0">;</span>
+                    <span class="s1">String adresse = address.getText().toString()</span><span class="s0">;</span>
+                    <span class="s0">int </span><span class="s1">versicherung = Integer.parseInt(krankKasse.getText().toString())</span><span class="s0">;</span>
+                    <span class="s1">String birthdate = geburtsTag.getText().toString()</span><span class="s0">;</span>
+                    <span class="s1">String phoneNumber = rufNummer.getText().toString()</span><span class="s0">;</span>
+                    <span class="s0">int </span><span class="s1">zimmerNummer = Integer.parseInt(zimmerNummerEditText.getText().toString())</span><span class="s0">;</span>
+                    <span class="s1">String Sex = sex.getText().toString()</span><span class="s0">;</span>
+                    <span class="s2">//Assign data to PatientClass</span>
+                    <span class="s1">PatientClass newPatient</span><span class="s0">;</span>
+                    <span class="s1">newPatient = </span><span class="s0">new </span><span class="s1">PatientClass(zimmerNummer</span><span class="s0">, </span><span class="s1">nachName</span><span class="s0">, </span><span class="s1">vorName</span><span class="s0">, </span><span class="s1">adresse</span><span class="s0">, </span><span class="s1">Sex</span><span class="s0">, </span><span class="s1">versicherung</span><span class="s0">, </span><span class="s1">birthdate</span><span class="s0">, </span><span class="s1">phoneNumber</span><span class="s0">, </span><span class="s3">&quot;Stabil&quot;</span><span class="s0">, </span><span class="s4">0</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s4">0</span><span class="s0">,</span><span class="s4">0</span><span class="s0">,</span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">ContainerAndGlobal.addPatient(newPatient)</span><span class="s0">;</span>
+                    <span class="s1">finish()</span><span class="s0">;</span>
+                    <span class="s1">Toast.makeText(AddPatient.</span><span class="s0">this, </span><span class="s3">&quot; Patient added successfully&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                <span class="s1">}</span>
+
+            <span class="s1">}</span>
+
+        <span class="s1">})</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

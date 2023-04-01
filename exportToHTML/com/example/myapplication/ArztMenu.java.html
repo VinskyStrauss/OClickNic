@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>ArztMenu.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ArztMenu.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myapplication</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.fragment.app.Fragment</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.view.LayoutInflater</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.ViewGroup</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.SearchView</span><span class="s0">;</span>
+
+
+<span class="s0">public class </span><span class="s1">ArztMenu </span><span class="s0">extends </span><span class="s1">Fragment {</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">View onCreateView(LayoutInflater inflater</span><span class="s0">, </span><span class="s1">ViewGroup container</span><span class="s0">,</span>
+                             <span class="s1">Bundle savedInstanceState) {</span>
+        <span class="s2">// Inflate the layout for this fragment</span>
+        <span class="s0">return </span><span class="s1">inflater.inflate(R.layout.fragment_arzt_menu</span><span class="s0">, </span><span class="s1">container</span><span class="s0">, false</span><span class="s1">)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onViewCreated(@NonNull View view</span><span class="s0">, </span><span class="s1">Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onViewCreated(view</span><span class="s0">,</span><span class="s1">savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">Button list =  view.findViewById(R.id.patientlist)</span><span class="s0">;</span>
+        <span class="s2">//Intent</span>
+        <span class="s1">Intent intent = </span><span class="s0">new </span><span class="s1">Intent(getActivity()</span><span class="s0">, </span><span class="s1">PatientList.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">list.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">startActivity(intent)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s2">//Searchview</span>
+        <span class="s1">SearchView searchBar = view.findViewById(R.id.search_bar)</span><span class="s0">;</span>
+        <span class="s1">Intent intent2 = </span><span class="s0">new </span><span class="s1">Intent(getActivity()</span><span class="s0">, </span><span class="s1">SearchArztActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">searchBar.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">startActivity(intent2)</span><span class="s0">;</span>
+                <span class="s1">searchBar.clearFocus()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">searchBar.setOnQueryTextFocusChangeListener((v</span><span class="s0">, </span><span class="s1">hasFocus)-&gt;{</span>
+            <span class="s0">if</span><span class="s1">(hasFocus)</span>
+            <span class="s1">startActivity(intent2)</span><span class="s0">;</span>
+            <span class="s1">requireActivity().overridePendingTransition(</span><span class="s3">0</span><span class="s0">,</span><span class="s3">0</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">searchBar.clearFocus()</span><span class="s0">;</span>
+        <span class="s1">})</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

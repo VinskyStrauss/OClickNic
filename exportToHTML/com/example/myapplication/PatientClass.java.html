@@ -1,0 +1,142 @@
+<html>
+<head>
+<title>PatientClass.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PatientClass.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myapplication</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">PatientClass {</span>
+
+
+    <span class="s0">public </span><span class="s1">PatientClass(</span><span class="s0">int </span><span class="s1">zimmerNummer</span><span class="s0">, </span><span class="s1">String nachname</span><span class="s0">, </span><span class="s1">String vorname</span><span class="s0">, </span><span class="s1">String adresse</span><span class="s0">, </span><span class="s1">String sex</span><span class="s0">, int </span><span class="s1">versicherungsnummer</span><span class="s0">,</span>
+                        <span class="s1">String birthday</span><span class="s0">, </span><span class="s1">String rufnummer</span><span class="s0">, </span><span class="s1">String status</span><span class="s0">, int </span><span class="s1">mrt</span><span class="s0">, </span><span class="s1">String bemerkung</span><span class="s0">, int </span><span class="s1">seemrt</span><span class="s0">, int </span><span class="s1">blood</span><span class="s0">, int </span><span class="s1">seeBlood) {</span>
+        <span class="s0">this</span><span class="s1">.zimmerNum = zimmerNummer</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.nachname = nachname</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.vorname = vorname</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.adresse = adresse</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.sex = sex</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.versicherungsnummer = versicherungsnummer</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.birthday = birthday</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.rufnummer = rufnummer</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.status = status</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.mrt = mrt</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.bemerkung = bemerkung</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.seemrt = seemrt</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.blood = blood</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.seeBlood = seeBlood</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">private final int </span><span class="s1">zimmerNum</span><span class="s0">;</span>
+    <span class="s0">private final </span><span class="s1">String nachname</span><span class="s0">;</span>
+    <span class="s0">private final </span><span class="s1">String vorname</span><span class="s0">;</span>
+    <span class="s0">private final </span><span class="s1">String adresse</span><span class="s0">;</span>
+    <span class="s0">private final </span><span class="s1">String sex</span><span class="s0">;</span>
+    <span class="s0">private final int </span><span class="s1">versicherungsnummer</span><span class="s0">;</span>
+    <span class="s0">private final </span><span class="s1">String birthday</span><span class="s0">;</span>
+    <span class="s0">private final </span><span class="s1">String rufnummer</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String status</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String bemerkung</span><span class="s0">;</span>
+    <span class="s0">private int </span><span class="s1">mrt</span><span class="s0">;</span>
+    <span class="s0">private int </span><span class="s1">seemrt</span><span class="s0">;</span>
+    <span class="s0">private int </span><span class="s1">blood</span><span class="s0">;</span>
+    <span class="s0">private int </span><span class="s1">seeBlood</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">BloodValueClass bloodValueClass</span><span class="s0">;</span>
+
+    <span class="s0">public </span><span class="s1">BloodValueClass getBloodValueClass() {</span>
+        <span class="s0">return </span><span class="s1">bloodValueClass</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setBloodValueClass(BloodValueClass bloodValueClass) {</span>
+        <span class="s0">this</span><span class="s1">.bloodValueClass = bloodValueClass</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public int </span><span class="s1">getBlood() {</span>
+        <span class="s0">return </span><span class="s1">blood</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setBlood(</span><span class="s0">int </span><span class="s1">blood) {</span>
+        <span class="s0">this</span><span class="s1">.blood = blood</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public int </span><span class="s1">getSeeBlood() {</span>
+        <span class="s0">return </span><span class="s1">seeBlood</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setSeeBlood(</span><span class="s0">int </span><span class="s1">seeBlood) {</span>
+        <span class="s0">this</span><span class="s1">.seeBlood = seeBlood</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public int </span><span class="s1">getZimmerNum() {</span>
+        <span class="s0">return </span><span class="s1">zimmerNum</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getNachname() {</span>
+        <span class="s0">return </span><span class="s1">nachname</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getVorname() {</span>
+        <span class="s0">return </span><span class="s1">vorname</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getAdresse() {</span>
+        <span class="s0">return </span><span class="s1">adresse</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getSex() {</span>
+        <span class="s0">return </span><span class="s1">sex</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public int </span><span class="s1">getVersicherungsnummer() {</span>
+        <span class="s0">return </span><span class="s1">versicherungsnummer</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getBirthday() {</span>
+        <span class="s0">return </span><span class="s1">birthday</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getRufnummer() {</span>
+        <span class="s0">return </span><span class="s1">rufnummer</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getStatus() {</span>
+        <span class="s0">return </span><span class="s1">status</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setStatus(String status) {</span>
+        <span class="s0">this</span><span class="s1">.status = status</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public int </span><span class="s1">getMrt() {</span>
+        <span class="s0">return </span><span class="s1">mrt</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setMrt(</span><span class="s0">int </span><span class="s1">mrt) {</span>
+        <span class="s0">this</span><span class="s1">.mrt = mrt</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setBemerkung(String bemerkung){</span>
+        <span class="s0">this</span><span class="s1">.bemerkung = bemerkung</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public </span><span class="s1">String getBemerkung(){</span>
+        <span class="s0">return </span><span class="s1">bemerkung</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setSeeMrt(</span><span class="s0">int </span><span class="s1">Set){</span>
+        <span class="s0">this</span><span class="s1">.seemrt = Set</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public int </span><span class="s1">getSeemrt(){</span>
+        <span class="s0">return </span><span class="s1">seemrt</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

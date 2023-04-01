@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+.s5 { color: #629755; font-style: italic;}
+.s6 { color: #629755; font-weight: bold; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myapplication</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.annotation.SuppressLint</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.SharedPreferences</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.preference.PreferenceManager</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatDelegate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.fragment.app.Fragment</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.google.android.material.bottomnavigation.BottomNavigationView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.gson.Gson</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.gson.JsonSyntaxException</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.gson.reflect.TypeToken</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">org.json.JSONArray</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.json.JSONObject</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.lang.reflect.Type</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+
+    <span class="s1">BottomNavigationView bottomNavigationView</span><span class="s0">;</span>
+    <span class="s1">@SuppressLint({</span><span class="s2">&quot;SetTextI18n&quot;</span><span class="s0">, </span><span class="s2">&quot;MissingInflatedId&quot;</span><span class="s1">})</span>
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_main)</span><span class="s0">;</span>
+        <span class="s0">if</span><span class="s1">(ContainerAndGlobal.isFirstTime()) {</span>
+            <span class="s1">ContainerAndGlobal.setFirstTime(</span><span class="s0">false</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">getNewPatientList()</span><span class="s0">;</span>
+            <span class="s0">if</span><span class="s1">(ContainerAndGlobal.getPatientListsVerwalter().size() == </span><span class="s3">0 </span><span class="s1">&amp;&amp; ContainerAndGlobal.getPatientLists().size() == </span><span class="s3">0</span><span class="s1">){</span>
+                <span class="s4">//Read JSON</span>
+                <span class="s0">try </span><span class="s1">{</span>
+                    <span class="s1">String jsonString = ContainerAndGlobal.getJSONData(</span><span class="s0">this, </span><span class="s2">&quot;PatientList.json&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">JSONArray jsonarray = </span><span class="s0">new </span><span class="s1">JSONArray(jsonString)</span><span class="s0">;</span>
+                    <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s3">0</span><span class="s0">; </span><span class="s1">i &lt; jsonarray.length()</span><span class="s0">; </span><span class="s1">i++) {</span>
+                        <span class="s1">JSONObject json_inside = jsonarray.getJSONObject(i)</span><span class="s0">;</span>
+                        <span class="s1">ContainerAndGlobal.parsePatientObject(json_inside)</span><span class="s0">;</span>
+                    <span class="s1">}</span>
+                <span class="s1">} </span><span class="s0">catch </span><span class="s1">(Exception e) {</span>
+                    <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+            <span class="s0">try </span><span class="s1">{</span>
+                <span class="s1">ArrayList&lt;String&gt; bloodTest = ContainerAndGlobal.readCSV(</span><span class="s0">this, </span><span class="s2">&quot;BloodValue.csv&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">ContainerAndGlobal.addCSVtoBloodValue(bloodTest)</span><span class="s0">;</span>
+            <span class="s1">}</span><span class="s0">catch </span><span class="s1">(Exception e){</span>
+                <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s4">//Create Fragment</span>
+        <span class="s0">final </span><span class="s1">HomeFragment homeFragment = </span><span class="s0">new </span><span class="s1">HomeFragment()</span><span class="s0">;</span>
+        <span class="s0">final </span><span class="s1">SettingFragment settingFragment = </span><span class="s0">new </span><span class="s1">SettingFragment()</span><span class="s0">;</span>
+        <span class="s0">final </span><span class="s1">InfoFragment infoFragment = </span><span class="s0">new </span><span class="s1">InfoFragment()</span><span class="s0">;</span>
+        <span class="s4">//BottomNavigationBar</span>
+        <span class="s1">bottomNavigationView = findViewById(R.id.bottomnavigationbar)</span><span class="s0">;</span>
+        <span class="s1">bottomNavigationView.setSelectedItemId(R.id.home)</span><span class="s0">;</span>
+        <span class="s4">//implementation of BottomNavigationBar</span>
+        <span class="s1">bottomNavigationView.setOnItemSelectedListener(item -&gt;  {</span>
+
+                <span class="s0">switch </span><span class="s1">(item.getItemId()){</span>
+                    <span class="s0">case </span><span class="s1">R.id.home:</span>
+                        <span class="s1">getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer</span><span class="s0">, </span><span class="s1">homeFragment).commit()</span><span class="s0">;</span>
+                        <span class="s0">return true;</span>
+                    <span class="s0">case </span><span class="s1">R.id.setting:</span>
+                        <span class="s1">getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer</span><span class="s0">, </span><span class="s1">settingFragment).commit()</span><span class="s0">;</span>
+                        <span class="s0">return true;</span>
+                    <span class="s0">case </span><span class="s1">R.id.info:</span>
+                        <span class="s1">getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer</span><span class="s0">, </span><span class="s1">infoFragment).commit()</span><span class="s0">;</span>
+                        <span class="s0">return true;</span>
+                <span class="s1">}</span>
+                <span class="s0">return false;</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s0">if</span><span class="s1">(!ContainerAndGlobal.isChangedSetting()) {</span>
+            <span class="s1">bottomNavigationView.setSelectedItemId(R.id.home)</span><span class="s0">;</span>
+        <span class="s1">}</span><span class="s0">else</span><span class="s1">{</span>
+            <span class="s1">getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer</span><span class="s0">, </span><span class="s1">settingFragment).commit()</span><span class="s0">;</span>
+            <span class="s1">ContainerAndGlobal.setChangedSetting(</span><span class="s0">false</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s4">// Saving state of our app</span>
+        <span class="s4">// using SharedPreferences</span>
+        <span class="s1">SharedPreferences sharedPreferences = getSharedPreferences(</span><span class="s2">&quot;sharedPrefs&quot;</span><span class="s0">, </span><span class="s1">MODE_PRIVATE)</span><span class="s0">;</span>
+        <span class="s1">ContainerAndGlobal.setDarkmode(sharedPreferences.getBoolean(</span><span class="s2">&quot;isDarkModeOn&quot;</span><span class="s0">, false</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s4">// When user reopens the app</span>
+        <span class="s4">// after applying dark/light mode</span>
+        <span class="s0">if </span><span class="s1">(ContainerAndGlobal.isDarkmode()) {</span>
+            <span class="s1">AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s5">/**</span>
+     <span class="s5">* function to change Fragment</span>
+     <span class="s5">* </span><span class="s6">@param </span><span class="s5">x</span>
+     <span class="s5">*/</span>
+    <span class="s0">public void </span><span class="s1">replaceFragment(Fragment x){</span>
+        <span class="s1">getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer</span><span class="s0">, </span><span class="s1">x).commit()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onDestroy() {</span>
+        <span class="s0">super</span><span class="s1">.onDestroy()</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">ContainerAndGlobal.saveData(getApplicationContext())</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(Exception e) {</span>
+            <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onPause() {</span>
+        <span class="s0">super</span><span class="s1">.onPause()</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">ContainerAndGlobal.saveData(getApplicationContext())</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(Exception e) {</span>
+            <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onResume() {</span>
+        <span class="s0">super</span><span class="s1">.onResume()</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">ContainerAndGlobal.saveData(getApplicationContext())</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(Exception e) {</span>
+            <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s5">/**</span>
+     <span class="s5">* function to get the actual patient list</span>
+     <span class="s5">*/</span>
+    <span class="s0">private void </span><span class="s1">getNewPatientList(){</span>
+        <span class="s0">try</span><span class="s1">{</span>
+            <span class="s1">SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext())</span><span class="s0">;</span>
+            <span class="s1">Gson gson = </span><span class="s0">new </span><span class="s1">Gson()</span><span class="s0">;</span>
+            <span class="s1">String json = sharedPrefs.getString(</span><span class="s2">&quot;PatientList&quot;</span><span class="s0">,</span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Type type = </span><span class="s0">new </span><span class="s1">TypeToken&lt;List&lt;PatientClass&gt;&gt;() {}.getType()</span><span class="s0">;</span>
+            <span class="s1">List&lt;PatientClass&gt; newList = gson.fromJson(json</span><span class="s0">,</span><span class="s1">type)</span><span class="s0">;</span>
+            <span class="s0">if</span><span class="s1">(newList != </span><span class="s0">null</span><span class="s1">){</span>
+                <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s0">; </span><span class="s1">i&lt;newList.size()</span><span class="s0">; </span><span class="s1">i++){</span>
+                    <span class="s1">ContainerAndGlobal.addPatient(newList.get(i))</span><span class="s0">;</span>
+                    <span class="s0">if</span><span class="s1">(newList.get(i).getMrt() == </span><span class="s3">1</span><span class="s1">){</span>
+                        <span class="s1">ContainerAndGlobal.addPatientMRT(newList.get(i))</span><span class="s0">;</span>
+                    <span class="s1">}</span>
+                    <span class="s0">if</span><span class="s1">(newList.get(i).getBlood() == </span><span class="s3">1</span><span class="s1">){</span>
+                        <span class="s1">ContainerAndGlobal.addPatientBloodTest(newList.get(i))</span><span class="s0">;</span>
+                    <span class="s1">}</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span><span class="s0">catch</span><span class="s1">(JsonSyntaxException e){</span>
+            <span class="s1">e.printStackTrace()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span></pre>
+</body>
+</html>

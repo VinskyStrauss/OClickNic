@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>PatientDataVerwalter.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PatientDataVerwalter.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myapplication</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">PatientDataVerwalter </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_patient_data_verwalter)</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">position = ContainerAndGlobal.getPosition()</span><span class="s0">;</span>
+        <span class="s1">TextView name = findViewById(R.id.textView4)</span><span class="s0">;</span>
+        <span class="s1">TextView sex = findViewById(R.id.textView5)</span><span class="s0">;</span>
+        <span class="s1">TextView birthdate = findViewById(R.id.textView6)</span><span class="s0">;</span>
+        <span class="s1">TextView address= findViewById(R.id.textView7)</span><span class="s0">;</span>
+        <span class="s1">TextView status = findViewById(R.id.textView8)</span><span class="s0">;</span>
+        <span class="s1">TextView insurance = findViewById(R.id.textView9)</span><span class="s0">;</span>
+        <span class="s1">TextView zimmer = findViewById(R.id.textView10)</span><span class="s0">;</span>
+        <span class="s1">TextView telephone = findViewById(R.id.textView12)</span><span class="s0">;</span>
+        <span class="s1">TextView note = findViewById(R.id.textView13)</span><span class="s0">;</span>
+        <span class="s2">//Object von Patient</span>
+        <span class="s1">PatientClass patient</span><span class="s0">;</span>
+        <span class="s1">patient=ContainerAndGlobal.getPatientListsVerwalter().get(position)</span><span class="s0">;</span>
+        <span class="s2">//Button</span>
+        <span class="s1">Button entlassen = findViewById(R.id.button3)</span><span class="s0">;</span>
+        <span class="s2">//Back</span>
+        <span class="s1">ImageView back = findViewById(R.id.imageView2)</span><span class="s0">;</span>
+
+        <span class="s1">name.setText(patient.getNachname() + </span><span class="s3">&quot; , &quot; </span><span class="s1">+ patient.getVorname())</span><span class="s0">;</span>
+        <span class="s1">sex.setText(patient.getSex())</span><span class="s0">;</span>
+        <span class="s1">birthdate.setText(patient.getBirthday())</span><span class="s0">;</span>
+        <span class="s1">address.setText(patient.getAdresse())</span><span class="s0">;</span>
+        <span class="s1">status.setText(patient.getStatus())</span><span class="s0">;</span>
+        <span class="s1">insurance.setText(Integer.toString(patient.getVersicherungsnummer()))</span><span class="s0">;</span>
+        <span class="s1">zimmer.setText(Integer.toString(patient.getZimmerNum()))</span><span class="s0">;</span>
+        <span class="s1">telephone.setText(patient.getRufnummer())</span><span class="s0">;</span>
+        <span class="s1">note.setText(patient.getBemerkung())</span><span class="s0">;</span>
+        <span class="s2">//Button Implementation</span>
+        <span class="s1">entlassen.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s0">if</span><span class="s1">(ContainerAndGlobal.checkDischarged(patient)){</span>
+                    <span class="s1">ContainerAndGlobal.deletePatient(patient)</span><span class="s0">;</span>
+                    <span class="s1">finish()</span><span class="s0">;</span>
+                    <span class="s1">Toast.makeText(PatientDataVerwalter.</span><span class="s0">this ,</span><span class="s3">&quot; Patient discharged! &quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                <span class="s1">}</span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">Toast.makeText(PatientDataVerwalter.</span><span class="s0">this, </span><span class="s3">&quot; Patient still sick! &quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s2">//Exit</span>
+        <span class="s1">back.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">finish()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
