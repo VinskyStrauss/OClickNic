@@ -22,7 +22,7 @@
             android:layout_margin="10dp"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="Name" />
+            android:text="Patient Name" />
 
         <TextView
             android:layout_below="@id/textViewName"
